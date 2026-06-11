@@ -1,5 +1,15 @@
 ---
-const faqs = [
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items?: FaqItem[];
+  subtext?: string;
+}
+
+const defaultFaqs: FaqItem[] = [
   {
     question: 'Can Altus support different project scheduling tools?',
     answer:
@@ -36,6 +46,9 @@ const faqs = [
       'Altus is deployed securely within your Microsoft tenant and works with tools your teams already use, including Microsoft Teams, Word, Excel and Power BI. Documents stay in familiar Microsoft locations rather than being locked inside another system.',
   },
 ];
+
+const { items = defaultFaqs, subtext } = Astro.props;
+const faqs = items;
 ---
 
 <section class="section_faq6">
@@ -46,6 +59,12 @@ const faqs = [
           <div class="w-layout-grid faq6_content">
             <div class="faq6_content-left">
               <h2 class="heading-style-h1">Frequently Asked Questions</h2>
+              {subtext && (
+                <>
+                  <div class="spacer-small"></div>
+                  <p class="text-size-medium text-style-muted">{subtext}</p>
+                </>
+              )}
             </div>
             <div class="faq6_list">
               <div class="accordion-css" data-accordion-css-init data-accordion-close-siblings="true">
