@@ -1,0 +1,15 @@
+---
+interface Props {
+  label: string;
+  count?: string;
+}
+
+const { label, count } = Astro.props;
+---
+
+<div class="section-marker">
+  <div class="square"></div>
+  <div class="text-style-tagline">{label}</div>
+  <div class="section-marker__line"></div>
+  {count && <div class="text-style-tagline section-marker__count">{count}</div>}
+</div>

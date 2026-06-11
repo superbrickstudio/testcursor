@@ -236,6 +236,33 @@ select {
   }
 }
 
+/* ---- Prism-style section markers ---- */
+.hero-kicker {
+  display: flex;
+  align-items: center;
+  grid-column-gap: 0.75rem;
+  gap: 0.75rem;
+}
+
+.section-marker {
+  display: flex;
+  align-items: center;
+  grid-column-gap: 0.75rem;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+
+.section-marker__line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--_primitives---opacity--neutral-darkest-10);
+}
+
+.section-marker__count {
+  opacity: 0.5;
+  font-size: 0.75rem;
+}
+
 /* ---- Lottie containers keep their aspect before the animation loads ---- */
 .lottie-animation svg {
   display: block;

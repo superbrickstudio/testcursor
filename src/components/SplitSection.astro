@@ -1,4 +1,6 @@
 ---
+import SectionMarker from './SectionMarker.astro';
+
 interface Props {
   heading: string;
   text: string;
@@ -7,6 +9,7 @@ interface Props {
   contentNodeId: string;
   colourWrapperClass: string;
   imageWrapperClass: string;
+  markerLabel?: string;
 }
 
 const {
@@ -17,6 +20,7 @@ const {
   contentNodeId,
   colourWrapperClass,
   imageWrapperClass,
+  markerLabel,
 } = Astro.props;
 ---
 
@@ -24,6 +28,7 @@ const {
   <div class="padding-global">
     <div class="container-large">
       <div class="padding-section-large">
+        {markerLabel && <SectionMarker label={markerLabel} />}
         <div class="layout1_component">
           <div class="w-layout-grid layout1_content">
             <div id={contentNodeId} class="layout1_content-left">
