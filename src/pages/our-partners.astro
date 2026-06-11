@@ -1,0 +1,436 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Cta from '../components/Cta.astro';
+
+interface Partner {
+  name: string;
+  region: string;
+  logo: string;
+  website: string;
+  description: string;
+}
+
+const regions: { name: string; partners: Partner[] }[] = [
+  {
+    name: 'Europe',
+    partners: [
+      {
+        name: 'Holert',
+        region: 'Germany, Switzerland & Austria (DACH)',
+        logo: '/images/partners/holert.png',
+        website: 'https://www.holert.com/',
+        description:
+          'Holert specializes in refining work organization through the adoption of Microsoft 365 and Atlassian Jira & Jira Align for digital and agile transformation. Their strong relationship with Microsoft, technical and methodological proficiency, and extensive experience gives them a unique edge in providing unparalleled services.',
+      },
+      {
+        name: 'Technology Associates',
+        region: 'UK',
+        logo: '/images/partners/technology-associates.png',
+        website: 'https://www.techassoc.com/',
+        description:
+          'Technology Associates is a multi-award-winning IT consultancy specialising in Portfolio and Project Management solutions, including Project Online, Project Server and Power Platform. Founded in 1990, they provide expert implementation, training, reporting, and managed services to help organisations improve project delivery, resource management, and portfolio visibility. Their highly acclaimed Migration Assessment Workshop is the perfect vehicle to assist customers in migrations from Project Online (or Project Server) to an Altus solution.',
+      },
+      {
+        name: 'Synergi',
+        region: 'UK & Ireland',
+        logo: '/images/partners/synergi.png',
+        website: 'https://www.teamsynergi.co.uk/',
+        description:
+          'Synergi is a leading, award-winning technology provider and Microsoft Partner, working with organisations to deploy powerful solutions that deliver tangible results. Synergi’s track record lies in helping clients to maximise their investment in modern technology to achieve their objectives. Synergi is a proud UK partner and provides consultancy, implementation, training, and ongoing support to organisations looking to make their work matter with Altus.',
+      },
+      {
+        name: 'Argain Consulting Innovation',
+        region: 'France',
+        logo: '/images/partners/argain.png',
+        website: 'https://www.argain-consulting.com/',
+        description:
+          'For over 20 years, Argain Consulting Innovation has propelled clients to new heights by helping them to achieve their most ambitious transformations. With 350 consultants across Europe, Argain excels in organisational governance, project performance, and data enhancement. Argain’s project management expertise supports clients in embedding project processes and governance, establishing PMOs, implementing PPM solutions, structuring, optimising and managing project portfolios and developing training programs.',
+      },
+      {
+        name: 'Wise',
+        region: 'Iceland & Scandinavia',
+        logo: '/images/partners/wise.png',
+        website: 'https://wise.is/',
+        description:
+          'Wise is a full-service IT company specializing in the development, consulting, and implementation of a broad range of business and operational solutions that help companies excel, overcome challenges, and seize new opportunities. Their solutions include hosting and operations services, cybersecurity offerings, and comprehensive business solutions for companies, institutions, and municipalities.',
+      },
+      {
+        name: 'Bram Project Expert',
+        region: 'Netherlands',
+        logo: '/images/partners/bram.svg',
+        website: 'https://projectexpert.nu/',
+        description:
+          'Bram Project Expert has a proven track record deploying PPM/EPM solutions for customers in The Netherlands. With close to thirty years of experience, Bram understands customers’ challenges and has gained the trust of organizations small and large. Once a functional designer in the Microsoft Project product team, he’s in a unique position to help users understand what works and what doesn’t, and create solutions managers need to efficiently run their organization.',
+      },
+      {
+        name: 'Enabler Consultancy',
+        region: 'Netherlands',
+        logo: '/images/partners/enabler.png',
+        website: 'https://www.enabler.nl/',
+        description:
+          'Enabler Consultancy is a specialised consultancy in project and portfolio management, combining change management expertise with mastery of tools like Microsoft Project, Altus, Power BI, and Power Automate. They support organizations in training, implementation, and adoption of PPM solutions, helping them move from Excel to integrated, insight-driven ways of working. With experience across 300+ organizations, Enabler guide transitions to future-proof solutions and provide flexible PMO in the Cloud support to ensure control, momentum, and lasting results.',
+      },
+      {
+        name: 'Turuncu Teknoloji',
+        region: 'Turkey, Europe & Middle East',
+        logo: '/images/partners/turuncu.png',
+        website: 'https://www.turuncuteknoloji.com.tr/',
+        description:
+          'Turuncu Teknoloji is a Microsoft Partner specializing in digital transformation and enterprise-grade Microsoft 365 solutions. With deep expertise in Project Online, SharePoint, Power BI, Power Apps, and Power Automate, Turuncu Teknoloji helps organisations streamline processes, enhance collaboration, and unlock data-driven insights. They deliver tailored consulting, implementation, and support services that empower businesses to adopt and maximise the value of Microsoft technologies.',
+      },
+      {
+        name: 'norocketsciences',
+        region: 'Austria',
+        logo: '/images/partners/norocketsciences.png',
+        website: 'https://www.norocketsciences.com/',
+        description:
+          'norocketsciences supports companies in selecting, customizing, and successfully implementing project management software and digital platforms. The team has extensive experience in IT-project management, process optimization, and implementation of modern collaboration and planning tools. The goal is to create practical systems that immediately improve team productivity and enable projects to be managed in a more structured, transparent, and efficient way.',
+      },
+      {
+        name: 'IPI GmbH',
+        region: 'Germany',
+        logo: '/images/partners/ipi.png',
+        website: 'https://www.ipi-gmbh.com/',
+        description:
+          'IPI GmbH guides companies through digital transformation since 1999 – today with a strong focus on AI, automation, content management and business solutions. IPI uses Microsoft 365 and full cycle development to build digital workplace and app solutions that drive efficiency, unlock knowledge and enable sustainable collaboration.',
+      },
+    ],
+  },
+  {
+    name: 'Americas',
+    partners: [
+      {
+        name: 'Advisicon',
+        region: 'North America & Europe',
+        logo: '/images/partners/advisicon.svg',
+        website: 'https://advisicon.com/',
+        description:
+          'Advisicon is a Microsoft Partner with over 30 years of expertise in project and portfolio management and consulting. With a client-first mindset, their expertise spans strategic planning, AI enablement, consulting, implementation, training, and change management to optimise processes and deliver measurable business outcomes.',
+      },
+      {
+        name: 'InTerms LLC',
+        region: 'United States',
+        logo: '/images/partners/interms.png',
+        website: 'https://www.intermsllc.com/',
+        description:
+          'InTerms LLC is an SBA 8(a), WOSB/EDWOSB, and MBE-certified Microsoft-focused IT services firm with deep expertise in PMO, project and portfolio management, EVM, SharePoint, Power Platform, data analytics, and IT modernization. With a government-first delivery mindset, InTerms helps federal, state, and local agencies improve governance, automate workflows, strengthen reporting, and deliver measurable mission outcomes.',
+      },
+      {
+        name: 'Lm4tech',
+        region: 'Brazil',
+        logo: '/images/partners/lm4tech.svg',
+        website: 'https://lm4tech.com/',
+        description:
+          'Lm4tech has been accelerating business growth for over 15 years through technological solutions and digital transformation — optimizing processes and turning large volumes of data into tools that simplify management and decision-making, while reducing costs and operational efforts. Lm4tech is a Microsoft Partner and a reference in Power Platform, SharePoint, and PPM Solutions, as well as a data driven and AI/Machine Learning provider.',
+      },
+    ],
+  },
+  {
+    name: 'Asia Pacific',
+    partners: [
+      {
+        name: 'Sensei',
+        region: 'Australia & New Zealand',
+        logo: '/images/partners/sensei.svg',
+        website: 'https://www.senseiprojectsolutions.com.au/',
+        description:
+          'Sensei has delivered world leading project and portfolio management solutions based on the Microsoft platform since 2009. They are proud of the long-term, trusted relationships they build with clients of all sizes by understanding their needs and tailoring solutions and support to accelerate their project management maturity.',
+      },
+      {
+        name: 'CAPPM',
+        region: 'India',
+        logo: '/images/partners/cappm.png',
+        website: 'https://www.cappmpl.com/',
+        description:
+          'CAPPM helps organizations unlock the power of digital, project management and agile transformation through expert guidance and proven methodologies. They specialize in project management, agile and SAFe methodologies with deep experience in PPM, EPPM and EAP implementation with a proven track record of successful implementation across various industries. They provide consulting, EPPM & EAP implementation, training, support and partner product solutions.',
+      },
+      {
+        name: 'Crafty Business',
+        region: 'Asia',
+        logo: '/images/partners/crafty.png',
+        website: 'https://www.crafty.business/',
+        description:
+          'Crafty Business empowers your Power Platform business transformation. Minimal investment, maximum impact. Get Crafty.',
+      },
+    ],
+  },
+];
+
+const totalPartners = regions.reduce((n, r) => n + r.partners.length, 0);
+---
+
+<BaseLayout
+  title="Our partners – Altus"
+  description="Our implementation partners have deep experience in organisational work management, the Altus platform and Microsoft technology, and work seamlessly with us to deliver your solution."
+>
+  <header class="section_partners-hero">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="partners-hero">
+            <div class="partners-hero__left">
+              <div class="partners-kicker">
+                <div class="square"></div>
+                <div class="text-style-tagline">Implementation partners</div>
+              </div>
+              <div class="spacer-small"></div>
+              <h1 class="heading-style-h1">
+                Our <span class="text-highlight">partners.</span>
+              </h1>
+            </div>
+            <div class="partners-hero__right">
+              <p class="heading-style-h6">
+                Our implementation partners have deep experience in organisational work management, the Altus platform
+                and Microsoft technology, and work seamlessly with us to deliver your solution, tailored to your
+                specific needs.
+              </p>
+              <div class="spacer-medium"></div>
+              <div class="partners-hero__stats">
+                <div class="partners-stat">
+                  <div class="partners-stat__number">{totalPartners}</div>
+                  <div class="text-style-tagline">Partners</div>
+                </div>
+                <div class="partners-stat">
+                  <div class="partners-stat__number">{regions.length}</div>
+                  <div class="text-style-tagline">Regions</div>
+                </div>
+                <div class="partners-stat">
+                  <div class="partners-stat__number">20+</div>
+                  <div class="text-style-tagline">Countries</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section_partners">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          {regions.map((region) => (
+            <div class="partners-region">
+              <div class="partners-region__divider">
+                <div class="square"></div>
+                <div class="text-style-tagline">{region.name}</div>
+                <div class="partners-region__line"></div>
+                <div class="text-style-tagline partners-region__count">
+                  {region.partners.length} partner{region.partners.length === 1 ? '' : 's'}
+                </div>
+              </div>
+              <div class="partners-grid">
+                {region.partners.map((partner) => (
+                  <article class="partner-card">
+                    <div class="partner-card__top">
+                      <div class="partner-card__logo-wrapper">
+                        <img src={partner.logo} alt={`${partner.name} logo`} loading="lazy" class="partner-card__logo" />
+                      </div>
+                      <div class="text-style-tagline partner-card__region">Region — {partner.region}</div>
+                    </div>
+                    <h2 class="heading-style-h5 partner-card__name">{partner.name}</h2>
+                    <p class="text-size-small partner-card__description">{partner.description}</p>
+                    <a href={partner.website} target="_blank" rel="noopener" class="partner-card__link">
+                      <span class="text-style-tagline">Visit website</span>
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                  </article>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Cta
+    heading="Ready to implement Altus?"
+    text="If you’d like more information about how Altus can meet your organisation’s needs, or how you can implement Altus, we’d love to hear from you. One of our experienced implementation partners will be in touch to answer your questions."
+    primaryLabel="Enquire now"
+    primaryHref="/demo"
+    secondaryLabel="Book a demo"
+    secondaryHref="/demo"
+  />
+</BaseLayout>
+
+<style>
+  .partners-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 4rem;
+    grid-row-gap: 2.5rem;
+    align-items: end;
+  }
+
+  .partners-kicker {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 0.75rem;
+  }
+
+  .partners-hero__right {
+    max-width: 36rem;
+  }
+
+  .partners-hero__stats {
+    display: flex;
+    grid-column-gap: 3rem;
+    border-top: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    padding-top: 1.5rem;
+  }
+
+  .partners-stat__number {
+    font-size: 2rem;
+    letter-spacing: -0.05rem;
+    line-height: 1.2;
+    color: var(--color-scheme--heading);
+  }
+
+  .partners-stat .text-style-tagline {
+    opacity: 0.6;
+    font-size: 0.75rem;
+  }
+
+  .partners-region {
+    padding-top: 2rem;
+  }
+
+  .partners-region + .partners-region {
+    padding-top: 5rem;
+  }
+
+  .partners-region__divider {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .partners-region__line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--_primitives---opacity--neutral-darkest-10);
+  }
+
+  .partners-region__count {
+    opacity: 0.5;
+    font-size: 0.75rem;
+  }
+
+  .partners-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .partner-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--_primitives---colors--white);
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    transition:
+      border-color 0.3s ease,
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .partner-card:hover {
+    border-color: var(--_primitives---altus--purple-bright);
+    transform: translateY(-0.25rem);
+    box-shadow: 0 1rem 2rem -1.25rem rgba(12, 8, 12, 0.25);
+  }
+
+  .partner-card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    grid-column-gap: 1.5rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .partner-card__logo-wrapper {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+  }
+
+  .partner-card__logo {
+    max-height: 2.5rem;
+    max-width: 11rem;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .partner-card__region {
+    opacity: 0.5;
+    font-size: 0.75rem;
+    text-align: right;
+    flex-shrink: 0;
+    max-width: 45%;
+    padding-top: 0.25rem;
+  }
+
+  .partner-card__name {
+    margin: 0 0 0.75rem;
+  }
+
+  .partner-card__description {
+    opacity: 0.7;
+    margin: 0 0 1.5rem;
+  }
+
+  .partner-card__link {
+    display: inline-flex;
+    align-items: center;
+    grid-column-gap: 0.5rem;
+    margin-top: auto;
+    color: var(--_primitives---brand--fuchsia-blue--700);
+    transition: opacity 0.2s ease;
+  }
+
+  .partner-card__link:hover {
+    opacity: 0.7;
+  }
+
+  .partner-card__link .text-style-tagline {
+    font-size: 0.75rem;
+  }
+
+  @media screen and (max-width: 991px) {
+    .partners-hero {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .partners-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .partners-hero__stats {
+      grid-column-gap: 2rem;
+    }
+
+    .partner-card {
+      padding: 1.5rem;
+    }
+
+    .partner-card__top {
+      flex-direction: column;
+      grid-row-gap: 1rem;
+    }
+
+    .partner-card__region {
+      text-align: left;
+      max-width: 100%;
+    }
+  }
+</style>
