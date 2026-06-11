@@ -1,0 +1,87 @@
+{
+  "name": "Government",
+  "title": "Project management for government",
+  "metaDescription": "Altus gives public sector PMOs a single source of truth for the portfolio — built natively inside Microsoft 365, with all data stored in your own tenant.",
+  "hero": {
+    "intro": "Government agencies are expected to deliver more programs, with greater transparency, on tighter budgets, with fewer resources. Altus gives public sector PMOs a single source of truth for the portfolio — built natively inside Microsoft 365, with all data stored in your own tenant.",
+    "primaryCta": { "label": "Book a demo", "href": "/demo" },
+    "secondaryCta": { "label": "Talk to our team", "href": "/demo" }
+  },
+  "caseStudy": {
+    "quote": "There has been a strong uptake of Altus across the department, with approximately 250 users and counting. The platform's user-friendliness and intuitiveness is one of the main reasons behind its adoption.",
+    "name": "Colin Munro",
+    "role": "Project Manager, NSW Department of Customer Service",
+    "link": { "label": "Read the case study", "href": "/case-studies" },
+    "stats": [
+      { "value": "250+", "label": "Users across the NSW Department of Customer Service" },
+      { "value": "3 months", "label": "To replace legacy tools and go live with Altus" },
+      { "value": "In tenant", "label": "All data stored within the agency’s own Microsoft 365 environment" }
+    ]
+  },
+  "callout": {
+    "heading": "Your agency probably already has most of what it needs.",
+    "text": "Altus runs on the Microsoft Power Platform, included with many Microsoft 365 government plans. Talk to our team about what your existing license covers.",
+    "cta": { "label": "Get started", "href": "/demo" }
+  },
+  "features": {
+    "heading": "Built for how government actually works",
+    "lead": "Public sector PMOs face requirements that generic PPM tools weren’t designed for. Altus addresses them at the platform level.",
+    "items": [
+      {
+        "heading": "Audit-ready reporting, built in",
+        "text": "Every update, decision, risk, and change is timestamped and attributed. When an audit or parliamentary inquiry arrives, the record is already complete; not assembled after the fact."
+      },
+      {
+        "heading": "Data sovereignty, not a footnote",
+        "text": "All Altus data is stored in Microsoft Dataverse, inside your agency’s own tenant. It never passes through Altus servers or any external environment. For agencies with data classification requirements, this matters from day one."
+      },
+      {
+        "heading": "GCC High for US federal agencies",
+        "text": "Altus meets the requirements of Microsoft’s GCC High cloud environment, making it one of the very few PPM platforms available to US federal agencies and high-compliance environments without exception or workaround."
+      },
+      {
+        "heading": "Portfolio visibility for ministerial reporting",
+        "text": "Aggregate project data across programs and directorates into executive-ready dashboards. When a minister or central agency asks for a portfolio summary, it reflects the current position, not last week’s status report."
+      },
+      {
+        "heading": "Stage-gate governance, without the overhead",
+        "text": "Approval workflows, assurance checkpoints, and RAID registers are built into the project; not bolted on separately. Governance happens in the tool teams already use, rather than in parallel spreadsheets."
+      },
+      {
+        "heading": "Benefits realisation for budget accountability",
+        "text": "Government programs are funded on the basis of promised outcomes. Altus connects those outcomes to the initiatives meant to deliver them, so agencies can demonstrate to central finance that the investment is producing what it said it would."
+      }
+    ]
+  },
+  "deployment": {
+    "heading": "Deployed inside your Microsoft environment in days",
+    "steps": [
+      {
+        "heading": "Deployed within your Microsoft 365 tenant",
+        "text": "Altus runs on the Power Platform inside your existing environment. No new external infrastructure, no data sovereignty questions, and no approval process outside your existing Microsoft governance framework."
+      },
+      {
+        "heading": "Configured by your implementation partner",
+        "text": "Altus is implemented by a global network of Microsoft and PPM specialists. Your partner configures Altus to match your capital program structure, reporting requirements, and the scheduling tools your engineering teams already use."
+      },
+      {
+        "heading": "Your teams work in the tools they already know",
+        "text": "Because Altus connects to Teams, SharePoint, Word, Excel, Power BI, and MS Project Desktop, adoption across engineering and project management teams is faster. There is less to learn and nothing new to log in to."
+      }
+    ]
+  },
+  "cta": {
+    "heading": "See how Altus works for your agency",
+    "text": "Book a 30-minute demo with our team. We can talk through how Altus handles your data sovereignty requirements, reporting obligations, and the tools your team already use.",
+    "primaryCta": { "label": "Book a demo", "href": "/demo" },
+    "secondaryCta": { "label": "Download the overview", "href": "#" },
+    "checklist": [
+      "All data stored within your own Microsoft 365 tenant",
+      "GCC High compatible for high-compliance",
+      "Audit-ready records built in from day one",
+      "Implemented by specialist Microsoft and PPM partners",
+      "Most agencies deployed within weeks",
+      "Fortnightly product updates, deployed on your schedule"
+    ]
+  }
+}

@@ -1,0 +1,523 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const industries = await getCollection('industries');
+  return industries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { name, title, metaDescription, hero, caseStudy, callout, features, deployment, cta } = entry.data;
+
+// Highlight the last word of the title in purple, matching the site's hero style.
+const titleWords = title.split(' ');
+const titleStart = titleWords.slice(0, -1).join(' ');
+const titleEnd = titleWords[titleWords.length - 1];
+
+const checkIcon = `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.3479 7.56384L9.7479 18.1638C9.65402 18.2585 9.52622 18.3117 9.3929 18.3117C9.25958 18.3117 9.13178 18.2585 9.0379 18.1638L3.6479 12.7738C3.55324 12.68 3.5 12.5522 3.5 12.4188C3.5 12.2855 3.55324 12.1577 3.6479 12.0638L4.3479 11.3638C4.44178 11.2692 4.56958 11.2159 4.7029 11.2159C4.83622 11.2159 4.96402 11.2692 5.0579 11.3638L9.3879 15.6938L18.9379 6.14384C19.1357 5.95205 19.4501 5.95205 19.6479 6.14384L20.3479 6.85384C20.4426 6.94772 20.4958 7.07552 20.4958 7.20884C20.4958 7.34216 20.4426 7.46995 20.3479 7.56384Z" fill="currentColor"></path></svg>`;
+---
+
+<BaseLayout title={`${title} – Altus`} description={metaDescription}>
+  <header class="section_industry-hero">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="industry-hero">
+            <div>
+              <div class="industry-kicker">
+                <div class="square"></div>
+                <div class="text-style-tagline">Industries — {name}</div>
+              </div>
+              <div class="spacer-small"></div>
+              <h1 class="heading-style-h1">
+                {titleStart} <span class="text-highlight">{titleEnd}</span>
+              </h1>
+            </div>
+            <div class="industry-hero__right">
+              <p class="heading-style-h6">{hero.intro}</p>
+              <div class="spacer-medium"></div>
+              <div class="button-group">
+                <a href={hero.primaryCta.href} class="button w-button">{hero.primaryCta.label}</a>
+                <a href={hero.secondaryCta.href} class="button is-secondary w-button">{hero.secondaryCta.label}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section_industry-casestudy">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="industry-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">Case study</div>
+            <div class="industry-divider__line"></div>
+          </div>
+          <blockquote class="industry-quote">
+            <p class="heading-style-h4 industry-quote__text">“{caseStudy.quote}”</p>
+            <div class="spacer-medium"></div>
+            <div class="industry-quote__footer">
+              <div>
+                <div class="heading-style-h6">{caseStudy.name}</div>
+                <div class="text-size-small industry-quote__role">{caseStudy.role}</div>
+              </div>
+              {caseStudy.link && (
+                <a href={caseStudy.link.href} class="industry-quote__link">
+                  <span class="text-style-tagline">{caseStudy.link.label}</span>
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </a>
+              )}
+            </div>
+          </blockquote>
+          <div class="industry-stats">
+            {caseStudy.stats.map((stat, i) => (
+              <div class="industry-stats__col">
+                <div class="text-style-tagline industry-stats__index">{String(i + 1).padStart(2, '0')}</div>
+                <div class="industry-stats__value">{stat.value}</div>
+                <p class="text-style-tagline industry-stats__label">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_industry-callout">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="industry-callout">
+            <div class="industry-callout__content">
+              <h2 class="heading-style-h3">{callout.heading}</h2>
+              <div class="spacer-xsmall"></div>
+              <p class="text-size-medium industry-callout__text">{callout.text}</p>
+            </div>
+            <a href={callout.cta.href} class="button is-secondary w-button">{callout.cta.label}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_industry-features">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="industry-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">Why Altus</div>
+            <div class="industry-divider__line"></div>
+            <div class="text-style-tagline industry-divider__count">{String(features.items.length).padStart(2, '0')}</div>
+          </div>
+          <div class="industry-split-header">
+            <h2 class="heading-style-h2">{features.heading}</h2>
+            <p class="text-size-medium text-style-muted industry-split-header__text">{features.lead}</p>
+          </div>
+          <div class="spacer-large"></div>
+          <div class="industry-features-grid">
+            {features.items.map((item) => (
+              <article class="industry-feature-card">
+                <div class="square"></div>
+                <h3 class="heading-style-h5">{item.heading}</h3>
+                <p class="text-size-medium industry-feature-card__text">{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_industry-deployment">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="industry-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">How it works</div>
+            <div class="industry-divider__line"></div>
+          </div>
+          <div class="max-width-large">
+            <h2 class="heading-style-h2">{deployment.heading}</h2>
+          </div>
+          <div class="spacer-large"></div>
+          <div class="industry-steps">
+            {deployment.steps.map((step, i) => (
+              <article class="industry-step">
+                <div class="text-style-tagline industry-step__number">{String(i + 1).padStart(2, '0')}</div>
+                <h3 class="heading-style-h5">{step.heading}</h3>
+                <p class="text-size-medium industry-step__text">{step.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_industry-cta">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="industry-cta">
+            <div class="industry-cta__top">
+              <div class="industry-cta__intro">
+                <h2 class="heading-style-h2">{cta.heading}</h2>
+                <div class="spacer-small"></div>
+                <p class="text-size-large industry-cta__text">{cta.text}</p>
+              </div>
+              <div class="button-group industry-cta__buttons">
+                <a href={cta.primaryCta.href} class="button w-button">{cta.primaryCta.label}</a>
+                <a href={cta.secondaryCta.href} class="button is-secondary w-button">{cta.secondaryCta.label}</a>
+              </div>
+            </div>
+            <div class="industry-cta__divider"></div>
+            <ul class="industry-cta__checklist" role="list">
+              {cta.checklist.map((item) => (
+                <li class="industry-cta__check">
+                  <div class="industry-cta__check-icon" set:html={checkIcon} />
+                  <span class="text-size-medium">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .industry-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 4rem;
+    grid-row-gap: 2.5rem;
+    align-items: end;
+  }
+
+  .industry-hero__right {
+    max-width: 36rem;
+  }
+
+  .industry-kicker {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 0.75rem;
+  }
+
+  .industry-divider {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .industry-divider__line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--_primitives---opacity--neutral-darkest-10);
+  }
+
+  .industry-divider__count {
+    opacity: 0.5;
+    font-size: 0.75rem;
+  }
+
+  /* ---- Case study quote + stats ---- */
+  .industry-quote {
+    margin: 0;
+    border-left: 2px solid var(--_primitives---altus--purple-bright);
+    padding-left: 2.5rem;
+    max-width: 60rem;
+  }
+
+  .industry-quote__text {
+    margin: 0;
+  }
+
+  .industry-quote__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+  }
+
+  .industry-quote__role {
+    opacity: 0.6;
+  }
+
+  .industry-quote__link {
+    display: inline-flex;
+    align-items: center;
+    grid-column-gap: 0.5rem;
+    color: var(--_primitives---brand--fuchsia-blue--700);
+    transition: opacity 0.2s ease;
+  }
+
+  .industry-quote__link:hover {
+    opacity: 0.7;
+  }
+
+  .industry-quote__link .text-style-tagline {
+    font-size: 0.75rem;
+  }
+
+  .industry-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    margin-top: 3.5rem;
+  }
+
+  .industry-stats__col {
+    padding: 2rem 2rem 0 0;
+  }
+
+  .industry-stats__col + .industry-stats__col {
+    border-left: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    padding-left: 2rem;
+  }
+
+  .industry-stats__index {
+    color: var(--_primitives---altus--purple-bright);
+    font-size: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .industry-stats__value {
+    font-size: 3.5rem;
+    line-height: 1;
+    letter-spacing: -0.15rem;
+    color: var(--color-scheme--heading);
+    margin-bottom: 1rem;
+  }
+
+  .industry-stats__label {
+    opacity: 0.6;
+    font-size: 0.75rem;
+    margin: 0;
+    max-width: 18rem;
+  }
+
+  /* ---- Callout band ---- */
+  .industry-callout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem 4rem;
+    flex-wrap: wrap;
+    background-color: var(--_primitives---altus--purple-bright);
+    color: var(--_primitives---colors--white);
+    border-radius: 0.5rem;
+    padding: 3rem;
+  }
+
+  .industry-callout h2 {
+    margin: 0;
+    color: var(--_primitives---colors--white);
+  }
+
+  .industry-callout__content {
+    max-width: 44rem;
+  }
+
+  .industry-callout__text {
+    margin: 0;
+    opacity: 0.85;
+  }
+
+  /* ---- Features ---- */
+  .industry-split-header {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    grid-column-gap: 4rem;
+    grid-row-gap: 1rem;
+    align-items: end;
+  }
+
+  .industry-split-header h2 {
+    margin: 0;
+  }
+
+  .industry-split-header__text {
+    margin: 0;
+    max-width: 30rem;
+    justify-self: end;
+  }
+
+  .industry-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .industry-feature-card {
+    background-color: var(--_primitives---colors--white);
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    border-radius: 0.5rem;
+    padding: 2rem;
+  }
+
+  .industry-feature-card .square {
+    margin-bottom: 2.5rem;
+  }
+
+  .industry-feature-card h3 {
+    margin: 0 0 0.75rem;
+  }
+
+  .industry-feature-card__text {
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  /* ---- Deployment steps ---- */
+  .industry-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .industry-step {
+    border-top: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    padding-top: 1.5rem;
+  }
+
+  .industry-step__number {
+    color: var(--_primitives---altus--purple-bright);
+    font-size: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .industry-step h3 {
+    margin: 0 0 0.75rem;
+  }
+
+  .industry-step__text {
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  /* ---- CTA with checklist ---- */
+  .section_industry-cta {
+    background-color: var(--_primitives---altus--950);
+    color: var(--_primitives---colors--white);
+  }
+
+  .industry-cta__top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-column-gap: 4rem;
+    grid-row-gap: 2rem;
+    align-items: center;
+  }
+
+  .industry-cta__top h2 {
+    margin: 0;
+    color: var(--_primitives---colors--white);
+  }
+
+  .industry-cta__text {
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  .industry-cta__buttons {
+    justify-self: end;
+  }
+
+  .industry-cta__buttons :global(.button.is-secondary) {
+    border-color: var(--_primitives---opacity--white-30);
+    background-color: transparent;
+    color: var(--_primitives---colors--white);
+  }
+
+  .industry-cta__buttons :global(.button.is-secondary:hover) {
+    border-color: var(--_primitives---colors--white);
+  }
+
+  .industry-cta__divider {
+    height: 1px;
+    background-color: var(--_primitives---opacity--white-15);
+    margin: 3rem 0;
+  }
+
+  .industry-cta__checklist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem 2.5rem;
+  }
+
+  .industry-cta__check {
+    display: flex;
+    align-items: flex-start;
+    grid-column-gap: 0.75rem;
+  }
+
+  .industry-cta__check-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    color: var(--_primitives---altus--purple-bright);
+  }
+
+  @media screen and (max-width: 991px) {
+    .industry-hero,
+    .industry-split-header,
+    .industry-cta__top {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .industry-split-header__text {
+      justify-self: start;
+    }
+
+    .industry-cta__buttons {
+      justify-self: start;
+    }
+
+    .industry-features-grid,
+    .industry-steps {
+      grid-template-columns: 1fr;
+    }
+
+    .industry-stats {
+      grid-template-columns: 1fr;
+      border-top: none;
+    }
+
+    .industry-stats__col {
+      border-top: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+      padding-top: 1.5rem;
+    }
+
+    .industry-stats__col + .industry-stats__col {
+      border-left: none;
+      padding-left: 0;
+    }
+
+    .industry-cta__checklist {
+      grid-template-columns: 1fr;
+    }
+
+    .industry-quote {
+      padding-left: 1.5rem;
+    }
+  }
+</style>
