@@ -1,0 +1,314 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const checkIcon = `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.3479 7.56384L9.7479 18.1638C9.65402 18.2585 9.52622 18.3117 9.3929 18.3117C9.25958 18.3117 9.13178 18.2585 9.0379 18.1638L3.6479 12.7738C3.55324 12.68 3.5 12.5522 3.5 12.4188C3.5 12.2855 3.55324 12.1577 3.6479 12.0638L4.3479 11.3638C4.44178 11.2692 4.56958 11.2159 4.7029 11.2159C4.83622 11.2159 4.96402 11.2692 5.0579 11.3638L9.3879 15.6938L18.9379 6.14384C19.1357 5.95205 19.4501 5.95205 19.6479 6.14384L20.3479 6.85384C20.4426 6.94772 20.4958 7.07552 20.4958 7.20884C20.4958 7.34216 20.4426 7.46995 20.3479 7.56384Z" fill="currentColor"></path></svg>`;
+
+const expectations = [
+  'Tailored one-on-one platform walkthrough',
+  'Expert guidance & consulting',
+  'Comprehensive Q&A',
+  'No commitment to sign up',
+];
+
+const logos = [
+  { src: '/images/logo-melbourne-airport.svg', alt: 'Melbourne Airport' },
+  { src: '/images/logo-unisuper.svg', alt: 'UniSuper' },
+  { src: '/images/logo-mater-group.svg', alt: 'Mater Group' },
+  { src: '/images/logo-kbr.svg', alt: 'KBR' },
+  { src: '/images/logo-glencore.svg', alt: 'Glencore' },
+  { src: '/images/logo-lapp.svg', alt: 'Lapp' },
+];
+---
+
+<BaseLayout
+  title="Book a demo – Altus"
+  description="Schedule a one-on-one walkthrough of Altus. See how AI-driven PPM for Microsoft 365 can streamline your most complex projects."
+>
+  <header class="section_demo">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="demo-grid">
+            <div class="demo-intro">
+              <div class="demo-kicker">
+                <div class="square"></div>
+                <div class="text-style-tagline">Book a demo</div>
+              </div>
+              <div class="spacer-small"></div>
+              <h1 class="heading-style-h2">
+                See how Altus can streamline your most <span class="text-highlight">complex projects</span>
+              </h1>
+              <div class="spacer-small"></div>
+              <p class="text-size-large">
+                To organise an overview of Altus or find out more about how project management can help reach your
+                organisation’s strategic goals, fill out the form and one of our implementation partners will get in
+                touch.
+              </p>
+            </div>
+
+            <div class="demo-form-wrapper">
+              <div class="demo-form-card">
+                <div class="text-style-tagline demo-form-title">Schedule your one-on-one demo</div>
+                <div class="spacer-small"></div>
+                <form class="form_form" data-demo-form novalidate>
+                  <div class="form_field-2col">
+                    <div class="form_field-wrapper">
+                      <label for="first-name" class="form_field-label">First name</label>
+                      <input type="text" id="first-name" name="first-name" class="form_input w-input" autocomplete="given-name" required />
+                    </div>
+                    <div class="form_field-wrapper">
+                      <label for="last-name" class="form_field-label">Last name</label>
+                      <input type="text" id="last-name" name="last-name" class="form_input w-input" autocomplete="family-name" required />
+                    </div>
+                  </div>
+                  <div class="form_field-wrapper">
+                    <label for="email" class="form_field-label">Business email</label>
+                    <input type="email" id="email" name="email" class="form_input w-input" autocomplete="email" required />
+                  </div>
+                  <div class="form_field-2col">
+                    <div class="form_field-wrapper">
+                      <label for="phone" class="form_field-label">Phone</label>
+                      <input type="tel" id="phone" name="phone" class="form_input w-input" autocomplete="tel" />
+                    </div>
+                    <div class="form_field-wrapper">
+                      <label for="job-title" class="form_field-label">Job title</label>
+                      <input type="text" id="job-title" name="job-title" class="form_input w-input" autocomplete="organization-title" />
+                    </div>
+                  </div>
+                  <div class="form_field-wrapper">
+                    <label for="company" class="form_field-label">Company</label>
+                    <input type="text" id="company" name="company" class="form_input w-input" autocomplete="organization" required />
+                  </div>
+                  <div class="form_field-wrapper">
+                    <label for="message" class="form_field-label">Message <span class="demo-optional">(optional)</span></label>
+                    <textarea id="message" name="message" class="form_input is-text-area w-input demo-textarea" placeholder="Tell us about your current PPM setup, team size, or anything you'd like the demo to focus on"></textarea>
+                  </div>
+                  <button type="submit" class="button max-width-full w-button">Book your demo</button>
+                  <p class="text-size-small demo-privacy">
+                    See our <a href="/privacy-policy" class="demo-privacy-link">privacy policy</a> for how we manage
+                    user data.
+                  </p>
+                </form>
+                <div class="form_message-success-wrapper demo-success" hidden data-demo-success>
+                  <div class="form_message-success">
+                    <div class="heading-style-h6">Thank you!</div>
+                    <div>Your submission has been received. One of our implementation partners will be in touch.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="demo-extras">
+              <div class="demo-divider">
+                <div class="square"></div>
+                <div class="text-style-tagline">What to expect</div>
+                <div class="demo-divider__line"></div>
+              </div>
+              <ul class="demo-expectations" role="list">
+                {expectations.map((item) => (
+                  <li class="demo-expectation">
+                    <div class="pricing18_icon-wrapper">
+                      <div class="icon-embed-xsmall w-embed" set:html={checkIcon} />
+                    </div>
+                    <p class="text-size-medium">{item}</p>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="spacer-large"></div>
+
+              <blockquote class="demo-quote">
+                <p class="text-size-medium">
+                  “It’s really helping with achieving better outcomes. It’s made life easier for me and our project
+                  managers, and as for our executives, they like their reports on time and accurate. With Altus, that’s
+                  what they get.”
+                </p>
+                <div class="spacer-xsmall"></div>
+                <div class="heading-style-h6">Steve McEwin</div>
+                <div class="text-size-small demo-quote-role">PMO &amp; CI Manager, Beyond Bank</div>
+              </blockquote>
+            </div>
+          </div>
+
+          <div class="spacer-xxlarge"></div>
+
+          <div class="demo-trust-bar">
+            <div class="demo-divider">
+              <div class="square"></div>
+              <div class="text-style-tagline">Trusted by global Microsoft enterprises</div>
+              <div class="demo-divider__line"></div>
+            </div>
+            <div class="demo-logos">
+              {logos.map((logo) => (
+                <div class="demo-logo-wrapper">
+                  <img src={logo.src} alt={logo.alt} loading="lazy" class="demo-logo" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</BaseLayout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-demo-form]');
+  const success = document.querySelector<HTMLElement>('[data-demo-success]');
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    // TODO: wire to a form backend (Formspree / HubSpot / webhook) when one is chosen.
+    form.style.display = 'none';
+    if (success) success.hidden = false;
+  });
+</script>
+
+<style>
+  .demo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'intro form'
+      'extras form';
+    grid-column-gap: 5rem;
+    grid-row-gap: 3rem;
+    align-items: start;
+  }
+
+  .demo-intro {
+    grid-area: intro;
+  }
+
+  .demo-form-wrapper {
+    grid-area: form;
+  }
+
+  .demo-extras {
+    grid-area: extras;
+  }
+
+  .demo-kicker {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 0.75rem;
+  }
+
+  .demo-form-card {
+    background-color: var(--_primitives---colors--white);
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    border-radius: 0.5rem;
+    padding: 2.5rem;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .demo-form-title {
+    opacity: 0.6;
+    font-size: 0.75rem;
+  }
+
+  .demo-optional {
+    opacity: 0.5;
+    text-transform: none;
+  }
+
+  .demo-textarea {
+    min-height: 7.5rem;
+  }
+
+  .demo-privacy {
+    opacity: 0.6;
+    margin: 0;
+  }
+
+  .demo-privacy-link {
+    text-decoration: underline;
+  }
+
+  .demo-divider {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .demo-divider__line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--_primitives---opacity--neutral-darkest-10);
+  }
+
+  .demo-expectations {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2rem;
+  }
+
+  .demo-expectation {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 1rem;
+  }
+
+  .demo-expectation p {
+    margin: 0;
+  }
+
+  .demo-trust-bar .demo-divider {
+    margin-bottom: 2rem;
+  }
+
+  .demo-logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem 2.5rem;
+  }
+
+  .demo-logo {
+    max-height: 2.5rem;
+    max-width: 9.5rem;
+    object-fit: contain;
+  }
+
+  .demo-quote {
+    border-left: 2px solid var(--_primitives---altus--purple-bright);
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .demo-quote p {
+    margin: 0;
+  }
+
+  .demo-quote-role {
+    opacity: 0.6;
+  }
+
+  @media screen and (max-width: 991px) {
+    .demo-grid {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'intro'
+        'form'
+        'extras';
+      grid-column-gap: 0;
+    }
+
+    .demo-form-card {
+      position: static;
+      padding: 1.5rem;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    .demo-expectations {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
