@@ -1,0 +1,316 @@
+---
+// Temporary page for reviewing stats section redesign options. Not linked anywhere.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const stats = [
+  { index: '01', value: '80%', label: 'Efficiency gain in project initiation and management' },
+  { index: '02', value: '95%', label: 'Accuracy in estimation forecast' },
+  { index: '03', value: '90%', label: 'Less time spent generating reports' },
+  { index: '04', value: '70%', label: 'Reduction in error rates across projects', prefix: 'Up to' },
+];
+---
+
+<BaseLayout title="Stats options">
+  <!-- ============ OPTION A: Editorial ledger ============ -->
+  <section class="option-a" id="option-a">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="section-marker">
+            <div class="square"></div>
+            <div class="text-style-tagline">Results</div>
+            <div class="section-marker__line"></div>
+            <div class="text-style-tagline section-marker__count">04</div>
+          </div>
+          <div class="max-width-large">
+            <h2 class="heading-style-h1">Altus gives your team an unfair advantage</h2>
+          </div>
+          <div class="spacer-xxlarge"></div>
+          <div class="ledger">
+            {stats.map((stat) => (
+              <div class="ledger__col">
+                <div class="text-style-tagline ledger__index">{stat.index}</div>
+                <div class="ledger__value">
+                  {stat.prefix && <span class="ledger__prefix">{stat.prefix} </span>}{stat.value}
+                </div>
+                <p class="text-style-tagline ledger__label">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OPTION B: Bento cards ============ -->
+  <section class="option-b" id="option-b">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="section-marker">
+            <div class="square"></div>
+            <div class="text-style-tagline">Results</div>
+            <div class="section-marker__line"></div>
+            <div class="text-style-tagline section-marker__count">04</div>
+          </div>
+          <div class="max-width-large">
+            <h2 class="heading-style-h1">Altus gives your team an unfair advantage</h2>
+          </div>
+          <div class="spacer-xxlarge"></div>
+          <div class="bento">
+            {stats.map((stat, i) => (
+              <article class={`bento__card${i === 1 ? ' is-accent' : ''}`}>
+                <div class="text-style-tagline bento__index">{stat.index}</div>
+                <div class="bento__value">
+                  {stat.prefix && <span class="bento__prefix">{stat.prefix} </span>}{stat.value}
+                </div>
+                <p class="text-style-tagline bento__label">{stat.label}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OPTION C: Refined purple split ============ -->
+  <section class="option-c" id="option-c">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="section-marker is-on-purple">
+            <div class="square"></div>
+            <div class="text-style-tagline">Results</div>
+            <div class="section-marker__line"></div>
+            <div class="text-style-tagline section-marker__count">04</div>
+          </div>
+          <div class="purple-split">
+            <div class="purple-split__intro">
+              <h2 class="heading-style-h1">Altus gives your team an unfair advantage</h2>
+              <div class="spacer-small"></div>
+              <p class="text-size-medium purple-split__text">
+                Real results from PMOs running Altus across their portfolios.
+              </p>
+              <div class="spacer-medium"></div>
+              <a href="/case-studies" class="button is-secondary w-button">Read the case studies</a>
+            </div>
+            <div class="purple-split__stats">
+              {stats.map((stat) => (
+                <div class="purple-split__stat">
+                  <div class="purple-split__value">
+                    {stat.prefix && <span class="purple-split__prefix">{stat.prefix} </span>}{stat.value}
+                  </div>
+                  <p class="text-style-tagline purple-split__label">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ---------- Option A ---------- */
+  .ledger {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+  }
+
+  .ledger__col {
+    padding: 2rem 2rem 0 0;
+  }
+
+  .ledger__col + .ledger__col {
+    border-left: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    padding-left: 2rem;
+  }
+
+  .ledger__index {
+    color: var(--_primitives---altus--purple-bright);
+    font-size: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .ledger__value {
+    font-size: 4.5rem;
+    line-height: 1;
+    letter-spacing: -0.2rem;
+    color: var(--color-scheme--heading);
+    margin-bottom: 1rem;
+  }
+
+  .ledger__prefix {
+    font-size: 1.5rem;
+    letter-spacing: -0.05rem;
+  }
+
+  .ledger__label {
+    opacity: 0.6;
+    font-size: 0.75rem;
+    margin: 0;
+    max-width: 14rem;
+  }
+
+  /* ---------- Option B ---------- */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .bento__card {
+    background-color: var(--_primitives---colors--white);
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .bento__card:hover {
+    border-color: var(--_primitives---altus--purple-bright);
+    transform: translateY(-0.25rem);
+    box-shadow: 0 1rem 2rem -1.25rem rgba(12, 8, 12, 0.25);
+  }
+
+  .bento__card.is-accent {
+    background-color: var(--_primitives---altus--purple-bright);
+    border-color: var(--_primitives---altus--purple-bright);
+    color: var(--_primitives---colors--white);
+  }
+
+  .bento__card.is-accent .bento__value {
+    color: var(--_primitives---colors--white);
+  }
+
+  .bento__card.is-accent .bento__index,
+  .bento__card.is-accent .bento__label {
+    color: var(--_primitives---colors--white);
+    opacity: 0.8;
+  }
+
+  .bento__index {
+    color: var(--_primitives---altus--purple-bright);
+    font-size: 0.75rem;
+    margin-bottom: 4rem;
+  }
+
+  .bento__value {
+    font-size: 3.5rem;
+    line-height: 1;
+    letter-spacing: -0.15rem;
+    color: var(--color-scheme--heading);
+    margin-bottom: 1rem;
+    margin-top: auto;
+  }
+
+  .bento__prefix {
+    font-size: 1.25rem;
+    letter-spacing: -0.05rem;
+  }
+
+  .bento__label {
+    opacity: 0.6;
+    font-size: 0.75rem;
+    margin: 0;
+  }
+
+  /* ---------- Option C ---------- */
+  .option-c {
+    background-color: var(--_primitives---altus--purple-bright);
+    color: var(--_primitives---colors--white);
+  }
+
+  .option-c .heading-style-h1 {
+    color: var(--_primitives---colors--white);
+  }
+
+  .section-marker.is-on-purple .square {
+    background-color: var(--_primitives---colors--white);
+  }
+
+  .section-marker.is-on-purple .section-marker__line {
+    background-color: var(--_primitives---opacity--white-20);
+  }
+
+  .purple-split {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    grid-column-gap: 5rem;
+    grid-row-gap: 3rem;
+    align-items: start;
+  }
+
+  .purple-split__text {
+    opacity: 0.8;
+    max-width: 24rem;
+  }
+
+  .purple-split__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 3rem;
+  }
+
+  .purple-split__stat {
+    border-top: 1px solid var(--_primitives---opacity--white-20);
+    padding-top: 1.5rem;
+  }
+
+  .purple-split__value {
+    font-size: 4rem;
+    line-height: 1;
+    letter-spacing: -0.15rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .purple-split__prefix {
+    font-size: 1.5rem;
+    letter-spacing: -0.05rem;
+  }
+
+  .purple-split__label {
+    opacity: 0.7;
+    font-size: 0.75rem;
+    margin: 0;
+    max-width: 16rem;
+  }
+
+  /* ---------- shared responsive ---------- */
+  @media screen and (max-width: 991px) {
+    .ledger,
+    .bento {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .ledger__col {
+      border-top: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+      padding-top: 1.5rem;
+    }
+
+    .ledger {
+      border-top: none;
+    }
+
+    .ledger__col:nth-child(odd) {
+      border-left: none;
+      padding-left: 0;
+    }
+
+    .purple-split {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    .ledger,
+    .bento,
+    .purple-split__stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

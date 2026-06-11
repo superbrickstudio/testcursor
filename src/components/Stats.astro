@@ -2,43 +2,105 @@
 import SectionMarker from './SectionMarker.astro';
 
 const stats = [
-  { value: '80%', label: 'Efficiency gain in project initiation and management' },
-  { value: '95%', label: 'Accuracy in estimation forecast' },
-  { value: '90%', label: 'Less time spent generating reports' },
-  { value: '70%', label: 'Reduction in error rates across projects', prefix: 'Up to' },
+  { index: '01', value: '80%', label: 'Efficiency gain in project initiation and management' },
+  { index: '02', value: '95%', label: 'Accuracy in estimation forecast' },
+  { index: '03', value: '90%', label: 'Less time spent generating reports' },
+  { index: '04', value: '70%', label: 'Reduction in error rates across projects', prefix: 'Up to' },
 ];
 ---
 
-<section class="section_stats28">
+<section class="section_stats">
   <div class="padding-global">
     <div class="container-large">
       <div class="padding-section-large">
         <SectionMarker label="Results" count="04" />
-        <div class="stats28_component">
-          <div class="max-width-large">
-            <h2 class="heading-style-h1">Altus gives your team an unfair advantage</h2>
-          </div>
-          <div class="w-layout-grid stats28_list">
-            {stats.map((stat) => (
-              <div class="stats28_item">
-                <div class="stat-card">
-                  {stat.prefix ? (
-                    <div class="flex-horizontal">
-                      <div class="stats28_number"><span class="heading-style-h6">{stat.prefix}</span></div>
-                      <div class="stats28_number">{stat.value}</div>
-                    </div>
-                  ) : (
-                    <div class="stats28_number">{stat.value}</div>
-                  )}
-                  <div class="stats28_item-content">
-                    <p class="text-style-tagline">{stat.label}</p>
-                  </div>
-                </div>
+        <div class="max-width-large">
+          <h2 class="heading-style-h1">Altus gives your team an unfair advantage</h2>
+        </div>
+        <div class="spacer-xxlarge"></div>
+        <div class="stats-ledger">
+          {stats.map((stat) => (
+            <div class="stats-ledger__col">
+              <div class="text-style-tagline stats-ledger__index">{stat.index}</div>
+              <div class="stats-ledger__value">
+                {stat.prefix && <span class="stats-ledger__prefix">{stat.prefix} </span>}{stat.value}
               </div>
-            ))}
-          </div>
+              <p class="text-style-tagline stats-ledger__label">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .stats-ledger {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+  }
+
+  .stats-ledger__col {
+    padding: 2rem 2rem 0 0;
+  }
+
+  .stats-ledger__col + .stats-ledger__col {
+    border-left: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    padding-left: 2rem;
+  }
+
+  .stats-ledger__index {
+    color: var(--_primitives---altus--purple-bright);
+    font-size: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .stats-ledger__value {
+    font-size: 4.5rem;
+    line-height: 1;
+    letter-spacing: -0.2rem;
+    color: var(--color-scheme--heading);
+    margin-bottom: 1rem;
+  }
+
+  .stats-ledger__prefix {
+    font-size: 1.5rem;
+    letter-spacing: -0.05rem;
+  }
+
+  .stats-ledger__label {
+    opacity: 0.6;
+    font-size: 0.75rem;
+    margin: 0;
+    max-width: 14rem;
+  }
+
+  @media screen and (max-width: 991px) {
+    .stats-ledger {
+      grid-template-columns: 1fr 1fr;
+      border-top: none;
+    }
+
+    .stats-ledger__col {
+      border-top: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+      padding-top: 1.5rem;
+    }
+
+    .stats-ledger__col:nth-child(odd) {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    .stats-ledger {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-ledger__col {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+</style>
