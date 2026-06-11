@@ -177,6 +177,38 @@ const testimonials = [
     <img src="/images/microsoft-logo.svg" alt="Microsoft" loading="lazy" class="microsoft-logo" />
   </SplitSection>
 
+  <section class="section_partner-video">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-vertical padding-xxlarge">
+          <div class="partner-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">See it in action</div>
+            <div class="partner-divider__line"></div>
+          </div>
+          <div class="video-header">
+            <h2 class="heading-style-h2">Hear from our valued partner, Sensei</h2>
+            <p class="text-size-medium text-style-muted video-header__text">
+              Sensei has delivered world-leading project and portfolio management solutions on the Microsoft platform
+              since 2009. Hear what partnering with Altus looks like in practice.
+            </p>
+          </div>
+          <div class="spacer-large"></div>
+          <div class="video-card">
+            <iframe
+              class="video-embed"
+              src="https://www.youtube-nocookie.com/embed/lT1cpe8FnZ4"
+              title="Altus partner story — Sensei"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section_partner-testimonials">
     <div class="padding-global">
       <div class="container-large">
@@ -318,6 +350,38 @@ const testimonials = [
     margin: 0;
   }
 
+  .video-header {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    grid-column-gap: 4rem;
+    grid-row-gap: 1rem;
+    align-items: end;
+  }
+
+  .video-header h2 {
+    margin: 0;
+  }
+
+  .video-header__text {
+    margin: 0;
+    max-width: 30rem;
+    justify-self: end;
+  }
+
+  .video-card {
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: var(--_primitives---altus--950);
+  }
+
+  .video-embed {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+  }
+
   .partner-quotes-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -361,9 +425,14 @@ const testimonials = [
 
   @media screen and (max-width: 991px) {
     .partner-hero,
-    .benefits-grid {
+    .benefits-grid,
+    .video-header {
       grid-template-columns: 1fr;
       align-items: start;
+    }
+
+    .video-header__text {
+      justify-self: start;
     }
 
     .benefits-intro {
