@@ -1,0 +1,403 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+
+const checkIcon = `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.3479 7.56384L9.7479 18.1638C9.65402 18.2585 9.52622 18.3117 9.3929 18.3117C9.25958 18.3117 9.13178 18.2585 9.0379 18.1638L3.6479 12.7738C3.55324 12.68 3.5 12.5522 3.5 12.4188C3.5 12.2855 3.55324 12.1577 3.6479 12.0638L4.3479 11.3638C4.44178 11.2692 4.56958 11.2159 4.7029 11.2159C4.83622 11.2159 4.96402 11.2692 5.0579 11.3638L9.3879 15.6938L18.9379 6.14384C19.1357 5.95205 19.4501 5.95205 19.6479 6.14384L20.3479 6.85384C20.4426 6.94772 20.4958 7.07552 20.4958 7.20884C20.4958 7.34216 20.4426 7.46995 20.3479 7.56384Z" fill="currentColor"></path></svg>`;
+
+const tableCheckIcon = `<svg width="100%" height="100%" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="m229.66 77.66l-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69L218.34 66.34a8 8 0 0 1 11.32 11.32" fill="currentColor"></path></svg>`;
+
+const currencies = [
+  { code: 'usd', label: '$ USD', symbol: '$' },
+  { code: 'eur', label: '€ EURO', symbol: '€' },
+  { code: 'gbp', label: '£ GBP', symbol: '£' },
+  { code: 'aud', label: '$ AUD', symbol: '$' },
+];
+
+const plans = [
+  {
+    name: 'Project',
+    logo: '/images/tier-project.svg',
+    featured: false,
+    description: 'For organisations with varying project complexities, methodologies & organisational maturity.',
+    price: '1,440',
+    lead: null,
+    features: [
+      'Task management',
+      'Project management',
+      'Schedule management',
+      'Reports & dashboards',
+      'Unlimited environments',
+      'Integration templates',
+    ],
+    buttonClass: 'button max-width-full w-button',
+  },
+  {
+    name: 'Portfolio',
+    logo: '/images/tier-portfolio.svg',
+    featured: true,
+    description: 'For organisations that need to monitor and manage workloads and accurately forward plan capacity.',
+    price: '2,560',
+    lead: 'Everything in Project, plus:',
+    features: [
+      'Program management',
+      'Portfolio management',
+      'Timesheet management',
+      'Resource Management',
+      'Resource plans',
+    ],
+    buttonClass: 'button is-secondary is-alternate w-button',
+  },
+  {
+    name: 'Strategy',
+    logo: '/images/tier-strategy.svg',
+    featured: false,
+    description:
+      'For organisations that manage programs, portfolios, and resources, and want access to everything Altus has to offer.',
+    price: '3,200',
+    lead: 'Everything in Portfolio, plus:',
+    features: ['Strategic goal tracking', 'Strategic prioritisation', 'Benefit realisation management'],
+    buttonClass: 'button max-width-full w-button',
+  },
+];
+
+// included: [Project, Portfolio, Strategy]
+const comparison = [
+  {
+    group: 'Project Management',
+    rows: [
+      { feature: 'Project creation and management', included: [true, true, true] },
+      { feature: 'Task and deliverable tracking', included: [true, true, true] },
+      { feature: 'Schedule management (native, MS Project, Planner, Jira)', included: [true, true, true] },
+      { feature: 'RAID registers (risks, actions, issues, decisions)', included: [true, true, true] },
+      { feature: 'Reports and dashboards (Power BI)', included: [true, true, true] },
+      { feature: 'Microsoft Copilot (status drafting, risk surfacing)', included: [true, true, true] },
+      { feature: 'Unlimited environments', included: [true, true, true] },
+    ],
+  },
+  {
+    group: 'Portfolio & programme management',
+    rows: [
+      { feature: 'Programme management', included: [false, true, true] },
+      { feature: 'Portfolio management and visibility', included: [false, true, true] },
+      { feature: 'Demand management and project intake', included: [false, true, true] },
+      { feature: 'Financials (budget, forecast, actuals)', included: [false, true, true] },
+    ],
+  },
+  {
+    group: 'Resource management',
+    rows: [
+      { feature: 'Resource management and bookings', included: [false, true, true] },
+      { feature: 'Timesheet management', included: [false, true, true] },
+      { feature: 'Capacity and demand planning', included: [false, true, true] },
+      { feature: 'Resource heatmap', included: [false, true, true] },
+    ],
+  },
+  {
+    group: 'Strategic portfolio management',
+    rows: [
+      { feature: 'Strategic themes and goal tracking', included: [false, false, true] },
+      { feature: 'Strategic prioritisation (weighted scoring models)', included: [false, false, true] },
+      { feature: 'Scenario planning and portfolio optimisation', included: [false, false, true] },
+      { feature: 'Benefits realisation management', included: [false, false, true] },
+    ],
+  },
+];
+
+const pricingFaqs = [
+  {
+    question: 'What Microsoft licenses do I need to get started with Altus?',
+    answer:
+      'To seamlessly integrate Altus into your organization, each user requires the following Microsoft 365 licenses; Microsoft 365, Microsoft Power App, Microsoft Power BI.',
+  },
+  {
+    question: 'What is the difference between a Contributor and a Manager licence?',
+    answer:
+      "Manager licences are for anyone who creates or manages projects, runs reports, or manages resources — typically your project managers, PMO staff, and resource managers. Contributor licences are for the wider team members who update their tasks, log timesheets, and view dashboards, but don't need project creation or portfolio management access. Every plan includes 10 Manager licences; additional seats are added per the rates above.",
+  },
+  {
+    question: 'Can I start on one tier and upgrade later?',
+    answer:
+      "Yes. Altus is designed to grow with your organisation's project management maturity. Many customers start on Project or Portfolio and add the Strategy tier as they mature their approach to strategic alignment. Upgrades happen at the next billing cycle.",
+  },
+  {
+    question: 'What currencies does Altus support?',
+    answer:
+      'Altus pricing is available in USD, AUD, GBP, and EUR. The calculator above shows USD by default. Contact our team for pricing in your preferred currency, as rates are confirmed at the time of contract.',
+  },
+  {
+    question: 'Is there a minimum contract length?',
+    answer:
+      'Plans are billed annually. Talk to our team if your organisation has specific procurement requirements — most enterprise procurement needs can be accommodated.',
+  },
+  {
+    question: 'Is implementation included in the plan price?',
+    answer:
+      "Implementation is carried out by Altus's global partner network and is scoped separately to the platform licence. Most organisations are live within days for a standard deployment. Complex environments with custom workflows or governance requirements may take longer. Your implementation partner will provide a fixed-scope estimate before you start.",
+  },
+];
+---
+
+<BaseLayout
+  title="Pricing – Altus"
+  description="Pricing that scales with your organisation. Each Altus plan comes with 10 manager licenses, with tiers aligned to your project management maturity."
+>
+  <header class="section_pricing41">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="pricing41_component">
+            <div class="pricing-hero">
+              <div class="pricing-hero__left">
+                <div class="pricing-kicker">
+                  <div class="square"></div>
+                  <div class="text-style-tagline">Pricing</div>
+                </div>
+                <div class="spacer-small"></div>
+                <h1 class="heading-style-h1">Pricing that scales with your <span class="text-highlight">organisation</span></h1>
+              </div>
+              <div class="pricing-hero__right">
+                <p class="heading-style-h6">Each plan comes with 10 manager licenses</p>
+                <div class="spacer-small"></div>
+                <div class="currency-switcher" data-currency-switcher>
+                  {currencies.map((currency, i) => (
+                    <button
+                      class={`currency-switcher__option${i === 0 ? ' is-active' : ''}`}
+                      data-currency={currency.code}
+                      data-symbol={currency.symbol}
+                      type="button"
+                    >
+                      <span class="text-style-tagline">{currency.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div class="spacer-large"></div>
+            <div class="w-layout-grid pricing41_plans">
+              {plans.map((plan) => (
+                <div class={`pricing18_plan${plan.featured ? ' featured' : ''}`}>
+                  <div class="pricing18_content-top">
+                    <div class={`flex-horizontal${plan.featured ? ' between' : ''}`}>
+                      <img src={plan.logo} alt={plan.name} loading="lazy" class="tier-logo" />
+                      {plan.featured && (
+                        <div class="tag-wrapper inline">
+                          <div>most popular</div>
+                        </div>
+                      )}
+                    </div>
+                    <div class="spacer-small"></div>
+                    <p class="text-size-medium text-style-muted">{plan.description}</p>
+                    <div class="spacer-xxsmall"></div>
+                    <div class="heading-style-h1">
+                      <span data-price-symbol>$</span>{plan.price}
+                    </div>
+                    <p class="text-size-medium text-style-muted">Per month, billed annually</p>
+                    <div class="spacer-small"></div>
+                    <div class="pricing18_feature-list">
+                      {plan.lead && (
+                        <div class="pricing18_feature">
+                          <p class="tag text-size-medium text-style-muted">{plan.lead}</p>
+                        </div>
+                      )}
+                      {plan.features.map((feature) => (
+                        <div class="pricing18_feature">
+                          <div class="pricing18_icon-wrapper">
+                            <div class="icon-embed-xsmall w-embed" set:html={checkIcon} />
+                          </div>
+                          <p class="text-size-medium">{feature}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <a href="#" class={plan.buttonClass}>Start a free trial</a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section_pricing54">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large padding-top">
+          <div class="comparison-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">Compare plans</div>
+            <div class="comparison-divider__line"></div>
+            <div class="text-style-tagline comparison-divider__count">3 tiers</div>
+          </div>
+          <div class="pricing54_component">
+            <div class="pricing54_plans">
+              <div class="w-layout-grid pricing54_top-row">
+                <div class="pricing54_empty-space">
+                  <h2 class="heading-style-h4 max-width-tiny">What's included in each tier</h2>
+                </div>
+                <div class="pricing54_top-row-content is-first">
+                  <div class="pricing54_top-row-wrapper">
+                    <div class="heading-style-h5 is-pricing54-heading">Project</div>
+                  </div>
+                </div>
+                <div class="pricing54_top-row-content featured">
+                  <div class="pricing54_top-row-wrapper">
+                    <div class="flex-horizontal between">
+                      <div class="heading-style-h5">Portfolio</div>
+                      <div class="tag-wrapper inline alternate">
+                        <div>most popular</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="pricing54_top-row-content">
+                  <div class="pricing54_top-row-wrapper">
+                    <div class="heading-style-h5 is-pricing54-heading">Strategy</div>
+                  </div>
+                </div>
+              </div>
+              {comparison.map((group) => (
+                <>
+                  <div class="pricing54_heading-row">
+                    <div class="tag">{group.group}</div>
+                  </div>
+                  {group.rows.map((row) => (
+                    <div class="w-layout-grid pricing54_row">
+                      <div class="pricing54_feature">
+                        <div>{row.feature}</div>
+                      </div>
+                      {row.included.map((included, i) => (
+                        <div class={`pricing54_row-content${i === 0 ? ' is-first' : ''}${i === 1 ? ' featured' : ''}`}>
+                          {included ? (
+                            <div class="icon-embed-xsmall w-embed" set:html={tableCheckIcon} />
+                          ) : (
+                            <div class="comparison-dash" aria-label="not included">—</div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={pricingFaqs} />
+  <Cta />
+</BaseLayout>
+
+<script>
+  const switcher = document.querySelector('[data-currency-switcher]');
+  if (switcher) {
+    const options = switcher.querySelectorAll<HTMLButtonElement>('[data-currency]');
+    const symbols = document.querySelectorAll<HTMLElement>('[data-price-symbol]');
+    options.forEach((option) => {
+      option.addEventListener('click', () => {
+        options.forEach((o) => o.classList.toggle('is-active', o === option));
+        symbols.forEach((s) => (s.textContent = option.dataset.symbol ?? '$'));
+      });
+    });
+  }
+</script>
+
+<style>
+  .pricing-hero {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    grid-column-gap: 4rem;
+    grid-row-gap: 2rem;
+    align-items: end;
+  }
+
+  .pricing-kicker {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 0.75rem;
+  }
+
+  .pricing-hero__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 30rem;
+    justify-self: end;
+  }
+
+  .currency-switcher {
+    display: inline-flex;
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    border-radius: 0.375rem;
+    background-color: var(--_primitives---colors--white);
+    padding: 0.25rem;
+    grid-column-gap: 0.25rem;
+  }
+
+  .currency-switcher__option {
+    border: none;
+    background: transparent;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.875rem;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .currency-switcher__option .text-style-tagline {
+    font-size: 0.75rem;
+  }
+
+  .currency-switcher__option:hover {
+    background-color: var(--_primitives---altus--100);
+  }
+
+  .currency-switcher__option.is-active {
+    background-color: var(--_primitives---altus--purple-bright);
+    color: var(--_primitives---colors--white);
+  }
+
+  .comparison-divider {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .comparison-divider__line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--_primitives---opacity--neutral-darkest-10);
+  }
+
+  .comparison-divider__count {
+    opacity: 0.5;
+    font-size: 0.75rem;
+  }
+
+  .comparison-dash {
+    opacity: 0.25;
+    line-height: 1;
+  }
+
+  @media screen and (max-width: 991px) {
+    .pricing-hero {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .pricing-hero__right {
+      justify-self: start;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    .currency-switcher {
+      flex-wrap: wrap;
+    }
+  }
+</style>
