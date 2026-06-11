@@ -1,0 +1,388 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SplitSection from '../components/SplitSection.astro';
+import Cta from '../components/Cta.astro';
+
+const checkIcon = `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.3479 7.56384L9.7479 18.1638C9.65402 18.2585 9.52622 18.3117 9.3929 18.3117C9.25958 18.3117 9.13178 18.2585 9.0379 18.1638L3.6479 12.7738C3.55324 12.68 3.5 12.5522 3.5 12.4188C3.5 12.2855 3.55324 12.1577 3.6479 12.0638L4.3479 11.3638C4.44178 11.2692 4.56958 11.2159 4.7029 11.2159C4.83622 11.2159 4.96402 11.2692 5.0579 11.3638L9.3879 15.6938L18.9379 6.14384C19.1357 5.95205 19.4501 5.95205 19.6479 6.14384L20.3479 6.85384C20.4426 6.94772 20.4958 7.07552 20.4958 7.20884C20.4958 7.34216 20.4426 7.46995 20.3479 7.56384Z" fill="currentColor"></path></svg>`;
+
+const commitments = [
+  {
+    number: '01',
+    heading: 'Building trusted partnerships',
+    text: 'Based on open and honest communication and a shared commitment to success.',
+  },
+  {
+    number: '02',
+    heading: 'Bringing innovation and experience',
+    text: 'With a solution built for Microsoft 365 and consulting and support services.',
+  },
+  {
+    number: '03',
+    heading: 'Expanding partner capabilities',
+    text: 'To support sustainable business growth and increase long-term client value.',
+  },
+];
+
+const benefits = [
+  'Create sustainable business growth by expanding your solutions and services',
+  'Leverage and elevate your Microsoft and industry technology expertise',
+  'Receive comprehensive onboarding and implementation guidance',
+  'Gain ongoing access to dedicated technical and support teams',
+  'Join a global partner community with deep expertise',
+  'Access sales and marketing support, collateral and promotions',
+];
+
+const testimonials = [
+  {
+    quote:
+      'The partnership between Lm4tech and Altus has been highly positive and strategic for our growth. Their solutions add significant value to LM’s portfolio, going far beyond simply replacing Project Online by delivering a complete, modern, and customizable experience. We would also like to highlight the outstanding support, the close collaboration between our teams, and the commercial flexibility, all of which further strengthen this partnership.',
+    name: 'Luciano Gomes',
+    role: 'CEO, Lm4tech',
+    logo: '/images/partners/lm4tech.svg',
+  },
+  {
+    quote:
+      'Partnering with Altus has been an outstanding experience. Their team is responsive, collaborative, and genuinely committed to helping partners succeed, both technically and commercially. The combination of a modern PPM platform, strong Microsoft alignment, and a partner-first approach makes Altus a highly valued strategic partner for Technology Associates and our customers alike.',
+    name: 'Kelvin Kirby',
+    role: 'CEO, Technology Associates',
+    logo: '/images/partners/technology-associates.png',
+  },
+  {
+    quote:
+      "Altus offers a best-in-class solution at a very reasonable price level, making it the ideal solution for me to advise on after Project Online. The real advantage for me as a partner is their 'reachability', because even though Altus is based from Australia, it is easier to get a hold of anyone at Altus, then some of my closest friends!",
+    name: 'Sander Nekeman',
+    role: 'Owner, Enabler',
+    logo: '/images/partners/enabler.png',
+  },
+  {
+    quote:
+      "Altus' intuitive user experience, rich dashboards, and rapid deployment capabilities make Altus a preferred choice for organizations seeking to expand their project, program, portfolio, and strategic management maturity—without incurring excessive implementation, scaling, or support costs.",
+    name: 'Tim Runcie',
+    role: 'CEO, Advisicon',
+    logo: '/images/partners/advisicon.svg',
+  },
+];
+---
+
+<BaseLayout
+  title="Become a partner – Altus"
+  description="Altus welcomes premium partners to join our global network. Expand your solutions and services with a world-class PPM platform built for Microsoft 365."
+>
+  <header class="section_partner-hero">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="partner-hero">
+            <div class="partner-hero__left">
+              <div class="partner-kicker">
+                <div class="square"></div>
+                <div class="text-style-tagline">Partner program</div>
+              </div>
+              <div class="spacer-small"></div>
+              <h1 class="heading-style-h1">
+                Become an Altus <span class="text-highlight">partner</span>
+              </h1>
+            </div>
+            <div class="partner-hero__right">
+              <p class="heading-style-h6">
+                Altus welcomes premium partners to join our global network. Our implementation partners leverage their
+                technology and industry expertise to expand the solutions they provide to their clients with Altus.
+              </p>
+              <div class="spacer-medium"></div>
+              <div class="button-group">
+                <a href="/demo" class="button w-button">Let’s chat</a>
+                <a href="/our-partners" class="button is-secondary w-button">Meet our partners</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section_partner-commitment">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="partner-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">Our partner commitment</div>
+            <div class="partner-divider__line"></div>
+          </div>
+          <div class="max-width-large">
+            <p class="text-size-large">
+              The Altus team’s focus is to support partners in delivering high value, work, portfolio and project
+              management solutions that achieve rapid results. We do this by:
+            </p>
+          </div>
+          <div class="spacer-large"></div>
+          <div class="commitment-grid">
+            {commitments.map((item) => (
+              <article class="commitment-card">
+                <div class="text-style-tagline commitment-card__number">{item.number}</div>
+                <h3 class="heading-style-h5">{item.heading}</h3>
+                <p class="text-size-medium commitment-card__text">{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_partner-benefits">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-vertical padding-xxlarge">
+          <div class="benefits-grid">
+            <div class="benefits-intro">
+              <div class="partner-kicker">
+                <div class="square"></div>
+                <div class="text-style-tagline">Partner benefits</div>
+              </div>
+              <div class="spacer-small"></div>
+              <h2 class="heading-style-h2">What you get as an Altus partner</h2>
+              <div class="spacer-small"></div>
+              <p class="text-size-medium text-style-muted">
+                Altus is built on the Microsoft Power Platform and fully integrated with Microsoft Teams. To
+                successfully implement Altus, you will need sound Microsoft technology experience, along with a proven
+                commitment to deliver long-term value to your clients.
+              </p>
+            </div>
+            <ul class="benefits-list" role="list">
+              {benefits.map((benefit) => (
+                <li class="benefit-row">
+                  <div class="pricing18_icon-wrapper">
+                    <div class="icon-embed-xsmall w-embed" set:html={checkIcon} />
+                  </div>
+                  <p class="text-size-large benefit-row__text">{benefit}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SplitSection
+    heading="Altus partner capabilities"
+    text="Join forces with a leader in project and portfolio management. Deliver a standardized, rapidly deployable, and fully integrated solution built on the Microsoft Power Platform, and focus on what you do best: driving client success."
+    buttonLabel="Meet our partners"
+    buttonHref="/our-partners"
+    contentNodeId="partner-capabilities-content"
+    colourWrapperClass="white"
+    imageWrapperClass="white-2"
+  >
+    <img src="/images/microsoft-logo.svg" alt="Microsoft" loading="lazy" class="microsoft-logo" />
+  </SplitSection>
+
+  <section class="section_partner-testimonials">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-vertical padding-xxlarge">
+          <div class="partner-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">What our partners say</div>
+            <div class="partner-divider__line"></div>
+          </div>
+          <div class="max-width-large">
+            <h2 class="heading-style-h2">Empower your clients with a world-class PPM solution</h2>
+            <div class="spacer-small"></div>
+            <p class="text-size-medium text-style-muted">
+              Become an Altus partner today and start delivering a powerful, secure, and integrated PPM solution that
+              your clients will love.
+            </p>
+          </div>
+          <div class="spacer-large"></div>
+          <div class="partner-quotes-grid">
+            {testimonials.map((t) => (
+              <article class="partner-quote-card">
+                <p class="text-size-medium partner-quote-card__quote">“{t.quote}”</p>
+                <div class="partner-quote-card__footer">
+                  <div>
+                    <div class="heading-style-h6">{t.name}</div>
+                    <div class="text-size-small partner-quote-card__role">{t.role}</div>
+                  </div>
+                  <img src={t.logo} alt={`${t.role.split(', ')[1]} logo`} loading="lazy" class="partner-quote-card__logo" />
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Cta
+    heading="Be an Altus partner"
+    text="If you’d like more information about becoming an Altus partner, we’d love to hear from you."
+    primaryLabel="Let’s chat"
+    primaryHref="/demo"
+    secondaryLabel="Meet our partners"
+    secondaryHref="/our-partners"
+  />
+</BaseLayout>
+
+<style>
+  .partner-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 4rem;
+    grid-row-gap: 2.5rem;
+    align-items: end;
+  }
+
+  .partner-hero__right {
+    max-width: 36rem;
+  }
+
+  .partner-kicker {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 0.75rem;
+  }
+
+  .partner-divider {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .partner-divider__line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--_primitives---opacity--neutral-darkest-10);
+  }
+
+  .commitment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .commitment-card {
+    background-color: var(--_primitives---colors--white);
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    border-radius: 0.5rem;
+    padding: 2rem;
+  }
+
+  .commitment-card__number {
+    color: var(--_primitives---altus--purple-bright);
+    margin-bottom: 2.5rem;
+  }
+
+  .commitment-card h3 {
+    margin: 0 0 0.75rem;
+  }
+
+  .commitment-card__text {
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    grid-column-gap: 5rem;
+    grid-row-gap: 2.5rem;
+    align-items: start;
+  }
+
+  .benefits-intro {
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .benefits-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .benefit-row {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 1.25rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+  }
+
+  .benefit-row:first-child {
+    padding-top: 0.5rem;
+  }
+
+  .benefit-row__text {
+    margin: 0;
+  }
+
+  .partner-quotes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .partner-quote-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--_primitives---colors--white);
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    border-radius: 0.5rem;
+    padding: 2rem;
+  }
+
+  .partner-quote-card__quote {
+    margin: 0 0 1.5rem;
+    opacity: 0.8;
+  }
+
+  .partner-quote-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    grid-column-gap: 1.5rem;
+    margin-top: auto;
+  }
+
+  .partner-quote-card__role {
+    opacity: 0.6;
+  }
+
+  .partner-quote-card__logo {
+    max-height: 2rem;
+    max-width: 7.5rem;
+    object-fit: contain;
+    object-position: right center;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 991px) {
+    .partner-hero,
+    .benefits-grid {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .benefits-intro {
+      position: static;
+    }
+
+    .commitment-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .partner-quotes-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .commitment-card,
+    .partner-quote-card {
+      padding: 1.5rem;
+    }
+  }
+</style>
