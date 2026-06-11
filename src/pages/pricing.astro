@@ -61,6 +61,38 @@ const plans = [
   },
 ];
 
+const licences = [
+  {
+    name: 'Contributor',
+    price: '5',
+    description: 'For team members and timesheet users who need to collaborate, update work items, and stay informed.',
+    features: ['Update tasks and deliverables', 'Submit timesheets', 'View project dashboards', 'Respond to RAID items'],
+  },
+  {
+    name: 'Manager',
+    price: '10',
+    description: 'For those overseeing projects and need access to insights, reporting, and decision-making tools.',
+    features: [
+      'Create and manage projects',
+      'Manage resources and allocations',
+      'Run reports and dashboards',
+      'Full portfolio and programme access',
+    ],
+  },
+];
+
+const tools = [
+  { name: 'Microsoft Teams', icon: '/images/tools/teams.png' },
+  { name: 'Power BI', icon: '/images/tools/powerbi.svg' },
+  { name: 'SharePoint', icon: '/images/tools/sharepoint.png' },
+  { name: 'Microsoft Word', icon: '/images/tools/word.png' },
+  { name: 'Microsoft Excel', icon: '/images/tools/excel.png' },
+  { name: 'Microsoft Planner', icon: '/images/tools/planner.png' },
+  { name: 'Microsoft Copilot', icon: '/images/tools/copilot.png' },
+  { name: 'Power Automate', icon: '/images/tools/powerautomate.svg' },
+  { name: 'MS Project Desktop', icon: '/images/tools/msproject.png' },
+];
+
 // included: [Project, Portfolio, Strategy]
 const comparison = [
   {
@@ -140,7 +172,7 @@ const pricingFaqs = [
 
 <BaseLayout
   title="Pricing – Altus"
-  description="Pricing that scales with your organisation. Each Altus plan comes with 10 manager licenses, with tiers aligned to your project management maturity."
+  description="Pricing that scales with your organisation. Tiers aligned to your project management maturity, with 10 manager licences included in every plan."
 >
   <header class="section_pricing41">
     <div class="padding-global">
@@ -157,8 +189,6 @@ const pricingFaqs = [
                 <h1 class="heading-style-h1">Pricing that scales with your <span class="text-highlight">organisation</span></h1>
               </div>
               <div class="pricing-hero__right">
-                <p class="heading-style-h6">Each plan comes with 10 manager licenses</p>
-                <div class="spacer-small"></div>
                 <div class="currency-switcher" data-currency-switcher>
                   {currencies.map((currency, i) => (
                     <button
@@ -210,6 +240,9 @@ const pricingFaqs = [
                       ))}
                     </div>
                   </div>
+                  <div class="plan-licence-note">
+                    <div class="text-style-tagline">Includes 10 manager licenses</div>
+                  </div>
                   <a href="#" class={plan.buttonClass}>Start a free trial</a>
                 </div>
               ))}
@@ -220,15 +253,183 @@ const pricingFaqs = [
     </div>
   </header>
 
+  <section class="section_licences">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="pricing-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">Additional user licenses</div>
+            <div class="pricing-divider__line"></div>
+          </div>
+          <div class="split-header">
+            <h2 class="heading-style-h2">Additional user licenses</h2>
+            <p class="text-size-medium text-style-muted split-header__text">
+              Every Altus plan includes 10 Manager licences. Additional users come in two types depending on what they
+              need to do.
+            </p>
+          </div>
+          <div class="spacer-large"></div>
+          <div class="licence-grid">
+            {licences.map((licence) => (
+              <article class="licence-card">
+                <div class="licence-card__top">
+                  <h3 class="heading-style-h5">{licence.name}</h3>
+                  <div class="licence-card__price">
+                    <span class="licence-card__amount"><span data-price-symbol>$</span>{licence.price}</span>
+                    <span class="text-size-small text-style-muted">Per user, per month<br />Billed annually</span>
+                  </div>
+                </div>
+                <p class="text-size-medium text-style-muted licence-card__description">{licence.description}</p>
+                <div class="pricing18_feature-list">
+                  {licence.features.map((feature) => (
+                    <div class="pricing18_feature">
+                      <div class="pricing18_icon-wrapper">
+                        <div class="icon-embed-xsmall w-embed" set:html={checkIcon} />
+                      </div>
+                      <p class="text-size-medium">{feature}</p>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_calculator">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="pricing-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">Cost calculator</div>
+            <div class="pricing-divider__line"></div>
+          </div>
+          <div class="split-header">
+            <h2 class="heading-style-h2">Estimate your monthly cost</h2>
+            <p class="text-size-medium text-style-muted split-header__text">
+              Select your tier and enter how many of each licence type you need. The calculator accounts for the 10
+              Manager licences already included in your plan.
+            </p>
+          </div>
+          <div class="spacer-large"></div>
+          <div class="calculator" data-calculator>
+            <div class="calculator__controls">
+              <div class="calculator__field">
+                <div class="form_field-label">Your tier</div>
+                <div class="calculator__tiers">
+                  {plans.map((plan, i) => (
+                    <button
+                      type="button"
+                      class={`calculator__tier${i === 0 ? ' is-active' : ''}`}
+                      data-calc-tier={plan.price.replace(',', '')}
+                    >
+                      <span class="text-style-tagline">{plan.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div class="calculator__field-row">
+                <div class="calculator__field">
+                  <label class="form_field-label" for="calc-managers">Manager licences</label>
+                  <input
+                    type="number"
+                    id="calc-managers"
+                    class="form_input w-input calculator__input"
+                    value="10"
+                    min="0"
+                    step="1"
+                    data-calc-managers
+                  />
+                  <p class="text-size-small text-style-muted calculator__hint">First 10 included in your plan</p>
+                </div>
+                <div class="calculator__field">
+                  <label class="form_field-label" for="calc-contributors">Contributor licences</label>
+                  <input
+                    type="number"
+                    id="calc-contributors"
+                    class="form_input w-input calculator__input"
+                    value="0"
+                    min="0"
+                    step="1"
+                    data-calc-contributors
+                  />
+                  <p class="text-size-small text-style-muted calculator__hint"><span data-price-symbol>$</span>5 per user, per month</p>
+                </div>
+              </div>
+            </div>
+            <div class="calculator__summary">
+              <div class="text-style-tagline calculator__summary-title">Your estimate</div>
+              <div class="calculator__rows">
+                <div class="calculator__row">
+                  <span data-calc-plan-label>Project plan</span>
+                  <span><span data-price-symbol>$</span><span data-calc-plan-price>1,440</span></span>
+                </div>
+                <div class="calculator__row">
+                  <span data-calc-managers-label>0 additional managers</span>
+                  <span><span data-price-symbol>$</span><span data-calc-managers-price>0</span></span>
+                </div>
+                <div class="calculator__row">
+                  <span data-calc-contributors-label>0 contributors</span>
+                  <span><span data-price-symbol>$</span><span data-calc-contributors-price>0</span></span>
+                </div>
+              </div>
+              <div class="calculator__total-row">
+                <div>
+                  <div class="heading-style-h6">Total per month</div>
+                  <div class="text-size-small calculator__billed">Billed annually</div>
+                </div>
+                <div class="calculator__total"><span data-price-symbol>$</span><span data-calc-total>1,440</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_included-tools">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="pricing-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">Included in every plan</div>
+            <div class="pricing-divider__line"></div>
+          </div>
+          <div class="split-header">
+            <h2 class="heading-style-h2">Included in every plan</h2>
+            <p class="text-size-medium text-style-muted split-header__text">
+              Every Altus plan is built inside your Microsoft 365 tenant and connects natively to the tools your teams
+              already use.
+            </p>
+          </div>
+          <div class="spacer-large"></div>
+          <div class="tools-grid">
+            {tools.map((tool) => (
+              <div class="tool-chip">
+                <img src={tool.icon} alt="" loading="lazy" class="tool-chip__icon" />
+                <span class="text-size-medium">{tool.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section_pricing54">
     <div class="padding-global">
       <div class="container-large">
-        <div class="padding-section-large padding-top">
-          <div class="comparison-divider">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="pricing-divider">
             <div class="square"></div>
             <div class="text-style-tagline">Compare plans</div>
-            <div class="comparison-divider__line"></div>
-            <div class="text-style-tagline comparison-divider__count">3 tiers</div>
+            <div class="pricing-divider__line"></div>
+            <div class="text-style-tagline pricing-divider__count">3 tiers</div>
           </div>
           <div class="pricing54_component">
             <div class="pricing54_plans">
@@ -287,21 +488,118 @@ const pricingFaqs = [
     </div>
   </section>
 
-  <Faq items={pricingFaqs} />
-  <Cta />
+  <section class="section_implementation">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="pricing-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">Implementation</div>
+            <div class="pricing-divider__line"></div>
+          </div>
+          <div class="implementation-grid">
+            <div class="implementation-content">
+              <h2 class="heading-style-h2">Need something tailored to your organisation?</h2>
+              <div class="spacer-small"></div>
+              <p class="text-size-medium">
+                Altus is implemented by a global network of partners with deep experience in Microsoft and enterprise
+                PPM. They configure Altus to match your governance requirements, processes, and existing Microsoft
+                setup.
+              </p>
+              <div class="spacer-xsmall"></div>
+              <p class="text-size-medium text-style-muted">
+                If your organisation has specific compliance requirements, complex workflows, or a non-standard
+                Microsoft configuration, talk to our team about which implementation partner is right for you.
+              </p>
+              <div class="spacer-medium"></div>
+              <a href="/our-partners" class="button w-button">Find an implementation partner</a>
+            </div>
+            <div class="video-card">
+              <iframe
+                class="video-embed"
+                src="https://www.youtube-nocookie.com/embed/lT1cpe8FnZ4"
+                title="Altus partner story — Sensei"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={pricingFaqs} subtext="Questions about pricing, licences, and how Altus scales." />
+  <Cta
+    heading="Not sure which plan is right for you?"
+    text="Talk to our team. We can recommend the right tier based on your organisation's size, maturity, and what you're trying to achieve."
+    primaryLabel="Book a demo"
+    primaryHref="/demo"
+    secondaryLabel="Get the overview brochure"
+    secondaryHref="#"
+  />
 </BaseLayout>
 
 <script>
+  /* Currency switcher: swaps symbols everywhere on the page */
   const switcher = document.querySelector('[data-currency-switcher]');
   if (switcher) {
     const options = switcher.querySelectorAll<HTMLButtonElement>('[data-currency]');
-    const symbols = document.querySelectorAll<HTMLElement>('[data-price-symbol]');
     options.forEach((option) => {
       option.addEventListener('click', () => {
         options.forEach((o) => o.classList.toggle('is-active', o === option));
-        symbols.forEach((s) => (s.textContent = option.dataset.symbol ?? '$'));
+        document
+          .querySelectorAll<HTMLElement>('[data-price-symbol]')
+          .forEach((s) => (s.textContent = option.dataset.symbol ?? '$'));
       });
     });
+  }
+
+  /* Cost calculator */
+  const calc = document.querySelector<HTMLElement>('[data-calculator]');
+  if (calc) {
+    const MANAGER_RATE = 10;
+    const CONTRIBUTOR_RATE = 5;
+    const INCLUDED_MANAGERS = 10;
+
+    const tierButtons = calc.querySelectorAll<HTMLButtonElement>('[data-calc-tier]');
+    const managersInput = calc.querySelector<HTMLInputElement>('[data-calc-managers]')!;
+    const contributorsInput = calc.querySelector<HTMLInputElement>('[data-calc-contributors]')!;
+    const fmt = (n: number) => n.toLocaleString('en-US');
+
+    const update = () => {
+      const activeTier = calc.querySelector<HTMLButtonElement>('[data-calc-tier].is-active')!;
+      const planPrice = Number(activeTier.dataset.calcTier);
+      const planName = activeTier.textContent?.trim() ?? '';
+      const managers = Math.max(0, Math.floor(Number(managersInput.value) || 0));
+      const contributors = Math.max(0, Math.floor(Number(contributorsInput.value) || 0));
+      const extraManagers = Math.max(0, managers - INCLUDED_MANAGERS);
+
+      const managersCost = extraManagers * MANAGER_RATE;
+      const contributorsCost = contributors * CONTRIBUTOR_RATE;
+      const total = planPrice + managersCost + contributorsCost;
+
+      calc.querySelector('[data-calc-plan-label]')!.textContent = `${planName} plan`;
+      calc.querySelector('[data-calc-plan-price]')!.textContent = fmt(planPrice);
+      calc.querySelector('[data-calc-managers-label]')!.textContent =
+        `${extraManagers} additional manager${extraManagers === 1 ? '' : 's'}`;
+      calc.querySelector('[data-calc-managers-price]')!.textContent = fmt(managersCost);
+      calc.querySelector('[data-calc-contributors-label]')!.textContent =
+        `${contributors} contributor${contributors === 1 ? '' : 's'}`;
+      calc.querySelector('[data-calc-contributors-price]')!.textContent = fmt(contributorsCost);
+      calc.querySelector('[data-calc-total]')!.textContent = fmt(total);
+    };
+
+    tierButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        tierButtons.forEach((b) => b.classList.toggle('is-active', b === button));
+        update();
+      });
+    });
+    managersInput.addEventListener('input', update);
+    contributorsInput.addEventListener('input', update);
+    update();
   }
 </script>
 
@@ -322,10 +620,7 @@ const pricingFaqs = [
 
   .pricing-hero__right {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    max-width: 30rem;
-    justify-self: end;
+    justify-content: flex-end;
   }
 
   .currency-switcher {
@@ -335,6 +630,7 @@ const pricingFaqs = [
     background-color: var(--_primitives---colors--white);
     padding: 0.25rem;
     grid-column-gap: 0.25rem;
+    align-self: end;
   }
 
   .currency-switcher__option {
@@ -361,43 +657,300 @@ const pricingFaqs = [
     color: var(--_primitives---colors--white);
   }
 
-  .comparison-divider {
+  .plan-licence-note {
+    border-top: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-top: 1.25rem;
+  }
+
+  .plan-licence-note .text-style-tagline {
+    opacity: 0.6;
+    font-size: 0.75rem;
+  }
+
+  .pricing-divider {
     display: flex;
     align-items: center;
     grid-column-gap: 0.75rem;
     margin-bottom: 2rem;
   }
 
-  .comparison-divider__line {
+  .pricing-divider__line {
     flex: 1;
     height: 1px;
     background-color: var(--_primitives---opacity--neutral-darkest-10);
   }
 
-  .comparison-divider__count {
+  .pricing-divider__count {
     opacity: 0.5;
     font-size: 0.75rem;
   }
 
+  .split-header {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    grid-column-gap: 4rem;
+    grid-row-gap: 1rem;
+    align-items: end;
+  }
+
+  .split-header h2 {
+    margin: 0;
+  }
+
+  .split-header__text {
+    margin: 0;
+    max-width: 30rem;
+    justify-self: end;
+  }
+
+  /* ---- Licence cards ---- */
+  .licence-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .licence-card {
+    background-color: var(--_primitives---colors--white);
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    border-radius: 0.5rem;
+    padding: 2rem;
+  }
+
+  .licence-card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    grid-column-gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .licence-card__top h3 {
+    margin: 0;
+  }
+
+  .licence-card__price {
+    display: flex;
+    align-items: baseline;
+    grid-column-gap: 0.75rem;
+    text-align: right;
+  }
+
+  .licence-card__amount {
+    font-size: 2.5rem;
+    line-height: 1;
+    letter-spacing: -0.1rem;
+    color: var(--color-scheme--heading);
+  }
+
+  .licence-card__description {
+    margin: 0 0 1.5rem;
+  }
+
+  /* ---- Calculator ---- */
+  .calculator {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    background-color: var(--_primitives---colors--white);
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .calculator__controls {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 2rem;
+  }
+
+  .calculator__field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1.5rem;
+  }
+
+  .calculator__tiers {
+    display: inline-flex;
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    border-radius: 0.375rem;
+    padding: 0.25rem;
+    grid-column-gap: 0.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .calculator__tier {
+    flex: 1;
+    border: none;
+    background: transparent;
+    border-radius: 0.25rem;
+    padding: 0.625rem 1rem;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .calculator__tier .text-style-tagline {
+    font-size: 0.75rem;
+  }
+
+  .calculator__tier:hover {
+    background-color: var(--_primitives---altus--100);
+  }
+
+  .calculator__tier.is-active {
+    background-color: var(--_primitives---altus--purple-bright);
+    color: var(--_primitives---colors--white);
+  }
+
+  .calculator__input {
+    margin-bottom: 0;
+  }
+
+  .calculator__hint {
+    margin: 0.5rem 0 0;
+  }
+
+  .calculator__summary {
+    background-color: var(--_primitives---altus--950);
+    color: var(--_primitives---colors--white);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .calculator__summary-title {
+    opacity: 0.6;
+    font-size: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .calculator__rows {
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 1rem;
+  }
+
+  .calculator__row {
+    display: flex;
+    justify-content: space-between;
+    grid-column-gap: 1.5rem;
+    font-size: 0.9375rem;
+    opacity: 0.8;
+  }
+
+  .calculator__total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    grid-column-gap: 1.5rem;
+    border-top: 1px solid var(--_primitives---opacity--white-20);
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+
+  .calculator__billed {
+    opacity: 0.6;
+  }
+
+  .calculator__total {
+    font-size: 3rem;
+    line-height: 1;
+    letter-spacing: -0.1rem;
+  }
+
+  /* ---- Tools grid ---- */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .tool-chip {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 1rem;
+    background-color: var(--_primitives---colors--white);
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    border-radius: 0.5rem;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .tool-chip__icon {
+    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  /* ---- Comparison + implementation ---- */
   .comparison-dash {
     opacity: 0.25;
     line-height: 1;
   }
 
+  .implementation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    grid-column-gap: 5rem;
+    grid-row-gap: 2.5rem;
+    align-items: center;
+  }
+
+  .video-card {
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: var(--_primitives---altus--950);
+  }
+
+  .video-embed {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+  }
+
   @media screen and (max-width: 991px) {
-    .pricing-hero {
+    .pricing-hero,
+    .split-header,
+    .licence-grid,
+    .calculator,
+    .implementation-grid {
       grid-template-columns: 1fr;
       align-items: start;
     }
 
     .pricing-hero__right {
+      justify-content: flex-start;
+    }
+
+    .split-header__text {
       justify-self: start;
+    }
+
+    .tools-grid {
+      grid-template-columns: 1fr 1fr;
     }
   }
 
   @media screen and (max-width: 479px) {
-    .currency-switcher {
+    .currency-switcher,
+    .calculator__tiers {
       flex-wrap: wrap;
+    }
+
+    .calculator__field-row,
+    .tools-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .calculator__controls,
+    .calculator__summary {
+      padding: 1.5rem;
     }
   }
 </style>

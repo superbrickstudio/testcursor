@@ -6,6 +6,7 @@ interface FaqItem {
 
 interface Props {
   items?: FaqItem[];
+  subtext?: string;
 }
 
 const defaultFaqs: FaqItem[] = [
@@ -46,7 +47,7 @@ const defaultFaqs: FaqItem[] = [
   },
 ];
 
-const { items = defaultFaqs } = Astro.props;
+const { items = defaultFaqs, subtext } = Astro.props;
 const faqs = items;
 ---
 
@@ -58,6 +59,12 @@ const faqs = items;
           <div class="w-layout-grid faq6_content">
             <div class="faq6_content-left">
               <h2 class="heading-style-h1">Frequently Asked Questions</h2>
+              {subtext && (
+                <>
+                  <div class="spacer-small"></div>
+                  <p class="text-size-medium text-style-muted">{subtext}</p>
+                </>
+              )}
             </div>
             <div class="faq6_list">
               <div class="accordion-css" data-accordion-css-init data-accordion-close-siblings="true">

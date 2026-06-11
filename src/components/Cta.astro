@@ -1,3 +1,23 @@
+---
+interface Props {
+  heading?: string;
+  text?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+
+const {
+  heading = 'Ready to unlock project success?',
+  text = 'Schedule a demo to find out more about how Altus can help your organisation unlock project management success and reach your strategic goals.',
+  primaryLabel = 'Book a demo',
+  primaryHref = '/demo',
+  secondaryLabel = 'Start a free trial',
+  secondaryHref = '#',
+} = Astro.props;
+---
+
 <section class="section_cta19">
   <div class="padding-global">
     <div class="container-large">
@@ -6,18 +26,15 @@
           <div class="max-width-xlarge">
             <div class="cta-content">
               <div class="cta-content-top">
-                <h2 class="heading-style-h2">Ready to unlock project success?</h2>
+                <h2 class="heading-style-h2">{heading}</h2>
                 <div class="spacer-small"></div>
                 <div class="max-width-large">
-                  <p class="text-size-large">
-                    Schedule a demo to find out more about how Altus can help your organisation unlock project
-                    management success and reach your strategic goals.
-                  </p>
+                  <p class="text-size-large">{text}</p>
                 </div>
               </div>
               <div class="button-group">
-                <a href="/demo" class="button w-button">Book a demo</a>
-                <a href="#" class="button is-secondary w-button">Start a free trial</a>
+                <a href={primaryHref} class="button w-button">{primaryLabel}</a>
+                <a href={secondaryHref} class="button is-secondary w-button">{secondaryLabel}</a>
               </div>
             </div>
           </div>
