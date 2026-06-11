@@ -117,21 +117,6 @@ const logos = [
 
               <div class="spacer-large"></div>
 
-              <div class="demo-divider">
-                <div class="square"></div>
-                <div class="text-style-tagline">Trusted by global Microsoft enterprises</div>
-                <div class="demo-divider__line"></div>
-              </div>
-              <div class="demo-logos">
-                {logos.map((logo) => (
-                  <div class="demo-logo-wrapper">
-                    <img src={logo.src} alt={logo.alt} loading="lazy" class="demo-logo" />
-                  </div>
-                ))}
-              </div>
-
-              <div class="spacer-large"></div>
-
               <blockquote class="demo-quote">
                 <p class="text-size-medium">
                   “It’s really helping with achieving better outcomes. It’s made life easier for me and our project
@@ -142,6 +127,23 @@ const logos = [
                 <div class="heading-style-h6">Steve McEwin</div>
                 <div class="text-size-small demo-quote-role">PMO &amp; CI Manager, Beyond Bank</div>
               </blockquote>
+            </div>
+          </div>
+
+          <div class="spacer-xxlarge"></div>
+
+          <div class="demo-trust-bar">
+            <div class="demo-divider">
+              <div class="square"></div>
+              <div class="text-style-tagline">Trusted by global Microsoft enterprises</div>
+              <div class="demo-divider__line"></div>
+            </div>
+            <div class="demo-logos">
+              {logos.map((logo) => (
+                <div class="demo-logo-wrapper">
+                  <img src={logo.src} alt={logo.alt} loading="lazy" class="demo-logo" />
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -256,16 +258,21 @@ const logos = [
     margin: 0;
   }
 
+  .demo-trust-bar .demo-divider {
+    margin-bottom: 2rem;
+  }
+
   .demo-logos {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
     gap: 1.5rem 2.5rem;
   }
 
   .demo-logo {
-    max-height: 2.25rem;
-    max-width: 8.5rem;
+    max-height: 2.5rem;
+    max-width: 9.5rem;
     object-fit: contain;
   }
 
