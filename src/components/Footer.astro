@@ -1,0 +1,134 @@
+---
+const columnsLeft = [
+  {
+    label: 'explore',
+    links: [
+      { text: 'Our Partners', href: '/pricing' },
+      { text: 'Pricing', href: '/pricing' },
+      { text: 'Integrations', href: '/integrations' },
+      { text: 'Product Roadmap', href: '/product-roadmap' },
+    ],
+  },
+  {
+    label: 'product',
+    links: [
+      { text: 'Project Portfolio Management', href: '/project-portfolio-management' },
+      { text: 'Strategic Portfolio Management', href: '/strategic-portfolio-management' },
+      { text: 'Resource Management', href: '/resource-management' },
+      { text: 'Microsoft Ecosystem', href: '/microsoft-ecosystem' },
+    ],
+  },
+  {
+    label: 'industries',
+    links: [
+      { text: 'Healthcare', href: '#' },
+      { text: 'Financial Services', href: '#' },
+      { text: 'Logistics', href: '#' },
+      { text: 'Hospitality', href: '#' },
+      { text: 'Technology', href: '#' },
+    ],
+  },
+];
+
+const columnsRight = [
+  {
+    label: 'resources',
+    links: [
+      { text: 'Blog', href: '/blog' },
+      { text: 'Case Studies', href: '/case-studies' },
+      { text: 'Legal', href: '#' },
+      { text: 'Customer Support', href: '#' },
+      { text: 'Guides', href: '#' },
+    ],
+  },
+  {
+    label: 'Company',
+    links: [
+      { text: 'Why Altus', href: '#' },
+      { text: 'About', href: '/about-us' },
+      { text: 'Become a Partner', href: '#' },
+    ],
+  },
+  {
+    label: 'Altus in action',
+    links: [
+      { text: 'Book a Demo', href: '/demo' },
+      { text: 'Sign In', href: '#' },
+    ],
+  },
+  {
+    label: 'Social',
+    links: [
+      { text: 'LinkedIn', href: '#' },
+      { text: 'YouTube', href: '#' },
+    ],
+  },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer3_component">
+  <div class="padding-global">
+    <div class="container-large">
+      <div class="padding-vertical padding-xxlarge">
+        <div class="padding-bottom padding-xhuge">
+          <div class="w-layout-grid footer3_top-wrapper">
+            <div class="footer3_left-wrapper">
+              <a href="/" class="footer3_logo-link w-nav-brand">
+                <img src="/images/altus-mark.svg" alt="Altus" loading="lazy" class="footer3_logo" />
+              </a>
+              <div class="spacer-medium"></div>
+              <p class="heading-style-h6">
+                Altus brings together project data and schedules from every tool and platform, giving PMOs a unified
+                real-time view of your organisation.
+              </p>
+            </div>
+            <div class="w-layout-grid footer3_menu-wrapper">
+              <div class="footer-wrapper">
+                {columnsLeft.map((col) => (
+                  <div class="footer3_link-list">
+                    <p class="tag is-alternate text-size-medium">{col.label}</p>
+                    <div class="spacer-xsmall"></div>
+                    {col.links.map((link) => (
+                      <a href={link.href} class="footer3_link">{link.text}</a>
+                    ))}
+                  </div>
+                ))}
+              </div>
+              <div class="footer-wrapper">
+                {columnsRight.map((col) => (
+                  <div class="footer3_link-list">
+                    <p class="tag is-alternate text-size-medium">{col.label}</p>
+                    <div class="spacer-xsmall"></div>
+                    {col.links.map((link) => (
+                      <a href={link.href} class="footer3_link">{link.text}</a>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line-divider"></div>
+        <div class="padding-top padding-small">
+          <div class="footer3_bottom-wrapper">
+            <div class="flex-horizontal _1rem">
+              <div class="footer3_credit-text">© {year} Altus</div>
+              <div class="w-layout-grid footer3_legal-list">
+                <a href="/website-terms-conditions" class="footer3_legal-link">terms</a>
+                <a href="/privacy-policy" class="footer3_legal-link">privacy</a>
+                <a href="/eula" class="footer3_legal-link">EULA</a>
+              </div>
+            </div>
+            <div class="flex-horizontal _1rem">
+              <p class="time" data-current-time="Australia/Melbourne">
+                <span data-current-time-hours>9</span>:<span data-current-time-minutes>00</span>:<span data-current-time-seconds>00</span> MEL
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

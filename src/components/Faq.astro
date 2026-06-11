@@ -1,0 +1,82 @@
+---
+const faqs = [
+  {
+    question: 'Can Altus support different project scheduling tools?',
+    answer:
+      'Yes. Altus supports a mix of scheduling tools at the same time. Teams can continue working in Microsoft Project for complex schedules, Planner for lightweight work, or third-party tools like Jira. Altus consolidates this information in real time so portfolios can be managed centrally without forcing teams into a single tool.',
+  },
+  {
+    question: 'Does Altus support benefits realisation?',
+    answer:
+      'Yes — the Strategy tier includes strategy and benefit realisation, including managing strategic themes, goals and benefits across the portfolio, with benefit-related reporting available (for example benefits breakdown and benefits overview).',
+  },
+  {
+    question: 'How does Altus manage resources across different scheduling tools?',
+    answer:
+      "Altus maintains a single resource pool that spans every connected scheduling tool: MS Project Desktop, Planner, Jira, Azure DevOps, and others. Allocations made in any of them flow into the same view, so the PMO sees who's committed to what across the portfolio without reconciling separate systems.",
+  },
+  {
+    question: 'Does Altus require any infrastructure outside of Microsoft?',
+    answer:
+      'No. Altus is deployed entirely within your Microsoft 365 tenant on the Power Platform. There are no external servers, no third-party databases, and no data that leaves the Microsoft security boundary.',
+  },
+  {
+    question: 'How often does Altus release updates?',
+    answer:
+      'Every two weeks. Releases include new features, capability improvements, and fixes. Each one is documented in a release wrap-up post so you always know exactly what changed.',
+  },
+  {
+    question: 'What Microsoft licenses do I need to get started with Altus?',
+    answer:
+      'To seamlessly integrate Altus into your organization, each user requires the following Microsoft 365 licenses; Microsoft 365, Microsoft Power App, Microsoft Power BI.',
+  },
+  {
+    question: 'How does Altus work with Microsoft 365?',
+    answer:
+      'Altus is deployed securely within your Microsoft tenant and works with tools your teams already use, including Microsoft Teams, Word, Excel and Power BI. Documents stay in familiar Microsoft locations rather than being locked inside another system.',
+  },
+];
+---
+
+<section class="section_faq6">
+  <div class="padding-global">
+    <div class="container-large">
+      <div class="padding-section-large">
+        <div class="faq6_component">
+          <div class="w-layout-grid faq6_content">
+            <div class="faq6_content-left">
+              <h2 class="heading-style-h1">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq6_list">
+              <div class="accordion-css" data-accordion-css-init data-accordion-close-siblings="true">
+                <ul class="accordion-css__list" role="list">
+                  {faqs.map((faq) => (
+                    <li class="accordion-css__item" data-accordion-status="not-active">
+                      <div class="accordion-css__item-top" data-accordion-toggle>
+                        <h3 class="heading-style-h5">{faq.question}</h3>
+                        <div class="accordion-css__item-icon">
+                          <svg class="accordion-css__item-icon-svg" width="100%" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M28.5 22.5L18 12L7.5 22.5" stroke="currentColor" stroke-width="3" stroke-miterlimit="10"></path>
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="accordion-css__item-bottom">
+                        <div class="accordion-css__item-bottom-wrap">
+                          <div class="accordion-css__item-bottom-content">
+                            <div class="text-rich-text text-size-medium w-richtext">
+                              <p>{faq.answer}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

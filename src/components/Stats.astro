@@ -1,0 +1,41 @@
+---
+const stats = [
+  { value: '80%', label: 'Efficiency gain in project initiation and management' },
+  { value: '95%', label: 'Accuracy in estimation forecast' },
+  { value: '90%', label: 'Less time spent generating reports' },
+  { value: '70%', label: 'Reduction in error rates across projects', prefix: 'Up to' },
+];
+---
+
+<section class="section_stats28">
+  <div class="padding-global">
+    <div class="container-large">
+      <div class="padding-section-large">
+        <div class="stats28_component">
+          <div class="max-width-large">
+            <h2 class="heading-style-h1">Altus gives your team an unfair advantage</h2>
+          </div>
+          <div class="w-layout-grid stats28_list">
+            {stats.map((stat) => (
+              <div class="stats28_item">
+                <div class="stat-card">
+                  {stat.prefix ? (
+                    <div class="flex-horizontal">
+                      <div class="stats28_number"><span class="heading-style-h6">{stat.prefix}</span></div>
+                      <div class="stats28_number">{stat.value}</div>
+                    </div>
+                  ) : (
+                    <div class="stats28_number">{stat.value}</div>
+                  )}
+                  <div class="stats28_item-content">
+                    <p class="text-style-tagline">{stat.label}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

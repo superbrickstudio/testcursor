@@ -1,0 +1,46 @@
+---
+import '../styles/altus.webflow.css';
+import '../styles/custom.css';
+import MegaNav from '../components/MegaNav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Altus',
+  description = 'AI-driven PPM for Microsoft 365. Altus brings together project data and schedules from every tool and platform, giving PMOs a unified real-time view of your organisation.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
+    <link rel="apple-touch-icon" href="/images/webclip.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <main class="main-wrapper">
+        <MegaNav />
+        <slot />
+      </main>
+      <Footer />
+    </div>
+    <script src="../scripts/main.ts"></script>
+  </body>
+</html>

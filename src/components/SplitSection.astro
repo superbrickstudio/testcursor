@@ -1,0 +1,51 @@
+---
+interface Props {
+  heading: string;
+  text: string;
+  buttonLabel: string;
+  buttonHref?: string;
+  contentNodeId: string;
+  colourWrapperClass: string;
+  imageWrapperClass: string;
+}
+
+const {
+  heading,
+  text,
+  buttonLabel,
+  buttonHref = '#',
+  contentNodeId,
+  colourWrapperClass,
+  imageWrapperClass,
+} = Astro.props;
+---
+
+<section class="section_layout1">
+  <div class="padding-global">
+    <div class="container-large">
+      <div class="padding-section-large">
+        <div class="layout1_component">
+          <div class="w-layout-grid layout1_content">
+            <div id={contentNodeId} class="layout1_content-left">
+              <div class="content-top">
+                <h2 class="heading-style-h1">{heading}</h2>
+                <div class="spacer-small"></div>
+              </div>
+              <p class="text-size-large">{text}</p>
+              <div class="spacer-xsmall">
+                <div class="button-group">
+                  <a href={buttonHref} class="button w-button">{buttonLabel}</a>
+                </div>
+              </div>
+            </div>
+            <div class={`colour-wrapper ${colourWrapperClass}`}>
+              <div class={`image-wrapper ${imageWrapperClass}`}>
+                <slot />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
