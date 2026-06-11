@@ -1,0 +1,79 @@
+---
+const cards = [
+  {
+    anchor: 'content-card1',
+    label: 'one source of truth',
+    heading: 'See the full picture',
+    text: 'Connect all the tools your team uses, no matter the schedule or platform. Altus gives you a centralised real-time source of truth that brings true visibility.',
+    cardClass: 'layout350-card padding-0',
+    colourClass: 'colour-wrapper',
+    imageClass: 'image-wrapper',
+    lottieClass: 'lottie-animation white-3',
+    lottie: '/lottie/eliminate-reporting.json',
+  },
+  {
+    anchor: 'content-card2',
+    label: 'drive strategy',
+    heading: 'Connect strategy to execution',
+    text: 'Make strategy part of your regular process. With goals, prioritisation, optimisation and benefits realisation, make smarter decisions that move the strategic needle.',
+    cardClass: 'layout350-card',
+    colourClass: 'colour-wrapper purple-4',
+    imageClass: 'image-wrapper purple-5',
+    lottieClass: 'lottie-animation purple-6',
+    lottie: '/lottie/connect-strategy.json',
+  },
+  {
+    anchor: 'content-card3',
+    label: 'reporting suite',
+    heading: 'Eliminate manual reporting headaches',
+    text: 'Automated workflows and a comprehensive suite of reports and dashboards out-of-the-box reduce reporting admin from weeks to minutes.',
+    cardClass: 'layout350-card',
+    colourClass: 'colour-wrapper white',
+    imageClass: 'image-wrapper white-2',
+    lottieClass: 'lottie-animation white-3',
+    lottie: '/lottie/eliminate-reporting.json',
+  },
+];
+---
+
+<section class="section_layout350">
+  <div class="padding-global">
+    <div class="container-large">
+      <div class="padding-section-large">
+        <div class="header46_component">
+          <div class="max-width-xlarge">
+            <h2 class="heading-style-h3">AI-driven PPM for Microsoft 365.</h2>
+            <h2 class="heading-style-h3 text-style">Eliminate admin and connect strategy to execution.</h2>
+          </div>
+          <div class="spacer-xxlarge"></div>
+        </div>
+        <div class="w-layout-grid layout350_component">
+          <div class="layout350_tabs-menu" id="w-node-c44bca6d-ee0f-39b2-4a34-9fe29297b16c-0b2216ca">
+            {cards.map((card) => (
+              <a href={`#${card.anchor}`} class="layout350_tab-link w-inline-block">
+                <div class="square"></div>
+                <div>{card.label}</div>
+              </a>
+            ))}
+          </div>
+          <div class="layout350_content-wrapper" id="w-node-c44bca6d-ee0f-39b2-4a34-9fe29297b179-0b2216ca">
+            {cards.map((card) => (
+              <div class={card.cardClass} id={card.anchor}>
+                <div class="layout350_content">
+                  <h2 class="heading-style-h3">{card.heading}</h2>
+                  <div class="spacer-xxsmall"></div>
+                  <p class="text-size-medium">{card.text}</p>
+                </div>
+                <div class={card.colourClass}>
+                  <div class={card.imageClass}>
+                    <div class={card.lottieClass} data-lottie-src={card.lottie}></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

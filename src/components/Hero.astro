@@ -1,0 +1,117 @@
+---
+const logos = [
+  { src: '/images/logo-melbourne-airport.svg', alt: 'Melbourne Airport' },
+  { src: '/images/logo-subtract.svg', alt: '' },
+  { src: '/images/logo-glencore.svg', alt: 'Glencore' },
+  { src: '/images/logo-unisuper.svg', alt: 'UniSuper' },
+  { src: '/images/logo-mater-group.svg', alt: 'Mater Group' },
+  { src: '/images/logo-lapp.svg', alt: 'Lapp' },
+  { src: '/images/logo-kbr.svg', alt: 'KBR' },
+];
+
+const logoNodeIds = [
+  ['w-node-_0644b81c-32e5-20d0-4e0f-67e025a1e7bf-25a1e7b5', 'w-node-_0644b81c-32e5-20d0-4e0f-67e025a1e7c1-25a1e7b5', 'w-node-_0644b81c-32e5-20d0-4e0f-67e025a1e7c3-25a1e7b5', 'w-node-_0644b81c-32e5-20d0-4e0f-67e025a1e7c5-25a1e7b5', 'w-node-_0644b81c-32e5-20d0-4e0f-67e025a1e7c7-25a1e7b5', 'w-node-_0644b81c-32e5-20d0-4e0f-67e025a1e7c9-25a1e7b5', 'w-node-_0644b81c-32e5-20d0-4e0f-67e025a1e7cb-25a1e7b5'],
+  ['w-node-_0644b81c-32e5-20d0-4e0f-67e025a1e7ce-25a1e7b5', 'w-node-_0644b81c-32e5-20d0-4e0f-67e025a1e7d0-25a1e7b5', 'w-node-_0644b81c-32e5-20d0-4e0f-67e025a1e7d2-25a1e7b5', 'w-node-_0644b81c-32e5-20d0-4e0f-67e025a1e7d4-25a1e7b5', 'w-node-_0644b81c-32e5-20d0-4e0f-67e025a1e7d6-25a1e7b5', 'w-node-_0644b81c-32e5-20d0-4e0f-67e025a1e7d8-25a1e7b5', 'w-node-_0644b81c-32e5-20d0-4e0f-67e025a1e7da-25a1e7b5'],
+];
+
+const tabs = [
+  {
+    id: 'tab-1',
+    heading: 'Project Portfolio Management',
+    text: 'Seamless integration with the tools your teams already use, to align project management across your organisation. Maximise your efficiency with the power of AI and Microsoft Copilot.',
+    lottie: '/lottie/ppm.json',
+  },
+  {
+    id: 'tab-2',
+    heading: 'Strategic Portfolio Management',
+    text: 'Prioritise, evaluate and optimise initiatives, to turn strategic insights into actionable plans, and align your portfolio with what matters most to your organisation.',
+    lottie: '/lottie/spm.json',
+  },
+  {
+    id: 'tab-3',
+    heading: 'Resource Management',
+    text: 'Built for simplicity and speed. Altus’ intuitive interface makes it easy to set up new projects, update tasks, and monitor progress without getting bogged down in admin.',
+    lottie: '/lottie/resource-management.json',
+  },
+];
+---
+
+<header class="section_header71">
+  <div class="padding-global">
+    <div class="container-large">
+      <div class="padding-section-large">
+        <div class="header71_component">
+          <div class="max-width-large">
+            <h1 class="heading-style-h1 hero max-width-medium">
+              All your projects. <span class="text-highlight">One platform.</span>
+            </h1>
+            <div class="spacer-small"></div>
+            <p class="heading-style-h6">
+              Altus brings together project data and schedules from every tool and platform, giving PMOs a unified
+              real-time view of your organisation. Purpose-built for Microsoft 365 environments, so you can focus on
+              driving results, not chasing data.
+            </p>
+            <div class="spacer-medium"></div>
+            <div class="button-group">
+              <a href="/demo" class="button w-button">Book a demo</a>
+              <a href="#" class="button is-secondary w-button">Start a free trial</a>
+            </div>
+          </div>
+          <div class="spacer-large"></div>
+          <section class="section_logo3">
+            <div class="container-large">
+              <div class="max-width-large">
+                <div class="text-style-tagline">Trusted by global Microsoft enterprises</div>
+              </div>
+            </div>
+            <div class="logo-wrapper">
+              <div class="logo-overlay"></div>
+              <div class="logo-overlay right"></div>
+              <div class="logo3_component">
+                {logoNodeIds.map((ids) => (
+                  <div class="logo3_list" aria-hidden={ids === logoNodeIds[1] ? 'true' : undefined}>
+                    {logos.map((logo, i) => (
+                      <div id={ids[i]} class="logo3_wrapper">
+                        <img src={logo.src} alt={logo.alt} loading="lazy" class="logo3_logo" />
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+          <div class="spacer-tiny"></div>
+          <div class="layout507_tabs w-tabs" data-tabs-wrapper>
+            <div class="layout507_tabs-content w-tab-content">
+              {tabs.map((tab, i) => (
+                <div class={`layout507_tab-pane w-tab-pane${i === 0 ? ' w--tab-active' : ''}`} data-tab-pane={tab.id}>
+                  <div class="layout507_card">
+                    <div class="gradient-wrapper landscape-9">
+                      <div class="image-wrapper padding-top">
+                        <div class="lottie-animation" data-lottie-src={tab.lottie}></div>
+                      </div>
+                      <div class="background-wrapper landscape-12">
+                        <div class="background-line landscape-16"></div>
+                        <div class="background-line landscape-16"></div>
+                        <div class="background-line landscape-16"></div>
+                        <div class="background-line landscape-16"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div class="layout507_tabs-menu w-tab-menu" id="w-node-d5e7c4b3-bc11-ff83-5560-542cdfb0798d-0b2216ca">
+              {tabs.map((tab, i) => (
+                <a class={`layout507_tab-link w-inline-block w-tab-link${i === 0 ? ' w--current' : ''}`} data-tab-link={tab.id} href={`#${tab.id}`}>
+                  <h3 class="heading-style-h6">{tab.heading}</h3>
+                  <p class="text-size-small">{tab.text}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

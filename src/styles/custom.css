@@ -1,0 +1,242 @@
+/*
+  Supplemental styles ported from the Webflow page embeds, plus small
+  CSS-only replacements for behaviours that were GSAP-driven on the
+  original site (logo marquee, mega-nav dropdown, accordion).
+*/
+
+/* ---- Font rendering (Webflow head embed) ---- */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -o-font-smoothing: antialiased;
+}
+
+/* ---- Webflow utility embed ---- */
+a,
+.w-input,
+.w-select,
+.w-tab-link,
+.w-nav-link,
+.w-nav-brand,
+.w-dropdown-btn,
+.w-dropdown-toggle,
+.w-slider-arrow-left,
+.w-slider-arrow-right,
+.w-dropdown-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}
+
+*[tabindex]:focus-visible,
+input[type="file"]:focus-visible {
+  outline: 0.125rem solid #4d65ff;
+  outline-offset: 0.125rem;
+}
+
+.w-richtext > :not(div):first-child,
+.w-richtext > div:first-child > :first-child {
+  margin-top: 0 !important;
+}
+
+.w-richtext > :last-child,
+.w-richtext ol li:last-child,
+.w-richtext ul li:last-child {
+  margin-bottom: 0 !important;
+}
+
+.pointer-events-off {
+  pointer-events: none;
+}
+
+.pointer-events-on {
+  pointer-events: auto;
+}
+
+.container-medium,
+.container-small,
+.container-large {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+select {
+  -webkit-appearance: none;
+}
+
+@media screen and (max-width: 991px) {
+  .hide,
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .hide-mobile-landscape {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+.margin-0 {
+  margin: 0rem !important;
+}
+
+.padding-0 {
+  padding: 0rem !important;
+}
+
+.spacing-clean {
+  padding: 0rem !important;
+  margin: 0rem !important;
+}
+
+.margin-top {
+  margin-right: 0rem !important;
+  margin-bottom: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-top {
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.margin-bottom {
+  margin-top: 0rem !important;
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-bottom {
+  padding-top: 0rem !important;
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.padding-vertical {
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+/* ---- Color scheme controls (Webflow embed) ---- */
+.color-scheme-2 {
+  --color-scheme-1--text: var(--color-scheme-2--text);
+  --color-scheme-1--background: var(--color-scheme-2--background);
+  --color-scheme-1--foreground: var(--color-scheme-2--foreground);
+  --color-scheme-1--border: var(--color-scheme-2--border);
+  --color-scheme-1--accent: var(--color-scheme-2--accent);
+}
+
+.color-scheme-3 {
+  --color-scheme-1--text: var(--color-scheme-3--text);
+  --color-scheme-1--background: var(--color-scheme-3--background);
+  --color-scheme-1--foreground: var(--color-scheme-3--foreground);
+  --color-scheme-1--border: var(--color-scheme-3--border);
+  --color-scheme-1--accent: var(--color-scheme-3--accent);
+}
+
+/* ---- Mega nav (ported from page embed, GSAP states replaced with CSS) ---- */
+[data-menu-wrap] {
+  --nav-height: 4em;
+}
+
+.mega-nav__panel-col:last-of-type {
+  border: none;
+}
+
+.mega-nav__dropdown-panel {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.mega-nav__dropdown-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  position: relative;
+}
+
+.mega-nav.nav-open .mega-nav__dropdown-wrapper {
+  pointer-events: auto;
+}
+
+.mega-nav.nav-open .mega-nav__backdrop {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease;
+}
+
+.mega-nav__backdrop {
+  transition: opacity 0.2s ease;
+}
+
+/* Mobile menu open state */
+@media screen and (max-width: 991px) {
+  .mega-nav.menu-open .mega-nav__bar-inner {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mega-nav.submenu-open .mega-nav__back {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mega-nav.submenu-open [data-menu-logo] {
+    opacity: 0;
+  }
+}
+
+/* ---- FAQ accordion (Webflow embed) ---- */
+.accordion-css__item-bottom {
+  transition: grid-template-rows 0.6s cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+[data-accordion-status="active"] .accordion-css__item-bottom {
+  grid-template-rows: 1fr;
+}
+
+.accordion-css__item-icon {
+  transition: transform 0.6s cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+[data-accordion-status="active"] .accordion-css__item-icon {
+  transform: rotate(0.001deg);
+}
+
+/* ---- Logo marquee (CSS replacement for the GSAP marquee) ---- */
+@keyframes logo-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - 4rem));
+  }
+}
+
+.logo3_component .logo3_list {
+  animation: logo-marquee 35s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo3_component .logo3_list {
+    animation: none;
+  }
+}
+
+/* ---- Lottie containers keep their aspect before the animation loads ---- */
+.lottie-animation svg {
+  display: block;
+}

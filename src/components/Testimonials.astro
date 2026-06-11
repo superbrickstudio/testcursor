@@ -1,0 +1,78 @@
+---
+const testimonials = [
+  {
+    image: '/images/casestudy-unisuper',
+    quote:
+      'Project visibility has improved significantly, which helps us make better decisions and allocate resources more effectively. The drop in complaints about information access shows just how engaged our teams are. They rely on Altus every day.',
+    name: 'Chi Keen Low',
+    role: 'PMO Manager, UniSuper',
+  },
+  {
+    image: '/images/casestudy-mater',
+    quote:
+      'The bottom line is, we’re seeing the data we want to see. Things like forecast versus investment plan value, allocations, progress, status, resource utilisation. Where once it would take days, it’s now a few clicks, a screenshot and I can bring executives up to speed on progress.',
+    name: 'Tim Mullins',
+    role: 'Director Digital Infrastructure, Mater Group',
+  },
+  {
+    image: '/images/casestudy-beyondbank',
+    quote:
+      'It’s really helping with achieving better outcomes. It’s made life easier for me and our project managers, and as for our executives, they like their reports on time and accurate. With Altus, that’s what they get.',
+    name: 'Steve McEwin',
+    role: 'PMO & CI Manager, Beyond Bank',
+  },
+  {
+    image: '/images/casestudy-melbourne-airport',
+    quote:
+      'The solution provided a way to examine our schedules and be able to report on them and easily pull-out gateway milestones and key milestones. That’s essentially why we had to upgrade our PMO, because we wanted to shift our focus to overall project management rather than previously where the focus had been on manually managing finances.',
+    name: 'Tim Mason',
+    role: 'Head of PMO, Melbourne Airport',
+  },
+];
+---
+
+<section class="section_testimonial62">
+  <div class="padding-global">
+    <div class="container-large">
+      <div class="padding-section-large">
+        <div class="testimonial62_component">
+          <div class="max-width-medium">
+            <h2 class="heading-style-h1">Trusted by global Microsoft enterprises</h2>
+          </div>
+          <div class="spacer-xxlarge">
+            <div class="testimonial62_grid-list" role="list">
+              {testimonials.map((t) => (
+                <div role="listitem">
+                  <div class="testimonial62_card">
+                    <div class="testimonial62_background-image-wrapper">
+                      <div class="image-overlay-layer"></div>
+                      <img
+                        src={`${t.image}.webp`}
+                        srcset={`${t.image}-500.webp 500w, ${t.image}-800.webp 800w, ${t.image}.webp 920w`}
+                        sizes="100vw"
+                        alt=""
+                        loading="lazy"
+                        class="testimonial62_background-image"
+                      />
+                    </div>
+                    <div class="testimonial62_card-content">
+                      <div class="spacer-small"></div>
+                      <div class="text-size-medium">{t.quote}</div>
+                      <div class="spacer-small"></div>
+                      <div class="testimonial62_client">
+                        <div class="testimonial62_client-info">
+                          <div class="heading-style-h6">{t.name}</div>
+                          <div>{t.role}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

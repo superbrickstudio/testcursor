@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SplitSection from '../components/SplitSection.astro';
+import Testimonials from '../components/Testimonials.astro';
+import ContentCards from '../components/ContentCards.astro';
+import Stats from '../components/Stats.astro';
+import Pricing from '../components/Pricing.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+---
+
+<BaseLayout title="Altus">
+  <Hero />
+  <SplitSection
+    heading="Microsoft Project Online migrations"
+    text="See why Altus is the ultimate successor to Microsoft Project Online. Whether you want to start fresh in Altus with your active projects, or bring across all your historical data and knowledge, there’s a simple migration path for every organisation."
+    buttonLabel="Migration options"
+    contentNodeId="w-node-fc15ccf8-2f3a-df13-9636-058a3d60fda5-3d60fda4"
+    colourWrapperClass="purple"
+    imageWrapperClass="purple-2"
+  >
+    <div class="lottie-animation purple-3" data-lottie-src="/lottie/migration.json"></div>
+  </SplitSection>
+  <Testimonials />
+  <ContentCards />
+  <Stats />
+  <SplitSection
+    heading="Purpose-built for Microsoft 365"
+    text="Altus’ unique architecture means it is securely deployed within your Microsoft tenant. Keep your data secure in your environment, and utilise the Microsoft tools and licenses your team already know and trust."
+    buttonLabel="Learn more"
+    contentNodeId="w-node-_8914a980-0de9-7745-9b3c-74912953983b-0b2216ca"
+    colourWrapperClass="white"
+    imageWrapperClass="white-2"
+  >
+    <img src="/images/microsoft-logo.svg" alt="Microsoft" loading="lazy" class="microsoft-logo" />
+  </SplitSection>
+  <Pricing />
+  <Faq />
+  <Cta />
+</BaseLayout>

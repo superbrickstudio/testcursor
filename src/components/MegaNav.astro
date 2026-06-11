@@ -1,0 +1,177 @@
+---
+const productLinks = [
+  { href: '/project-portfolio-management', text: 'Project Portfolio Management', desc: 'Streamline workflows' },
+  { href: '/strategic-portfolio-management', text: 'Strategic Portfolio Mangement', desc: 'Generate insights' },
+  { href: '/resource-management', text: 'Resource Management', desc: 'Build custom integrations' },
+  { href: '/microsoft-ecosystem', text: 'Microsoft Ecosystem', desc: 'See the full platform' },
+];
+
+const exploreLinks = [
+  { href: '/product-roadmap', text: 'Product Roadmap', desc: 'Streamline workflows' },
+  { href: '/integrations', text: 'Integrations', desc: 'Streamline workflows' },
+  { href: '/microsoft-ecosystem', text: 'Microsoft Ecosystem', desc: 'Streamline workflows' },
+];
+
+const companyLinks = [
+  { href: '/about-us', text: 'About us', desc: 'Our mission and team' },
+  { href: '#', text: 'Careers', desc: 'Join the team' },
+  { href: '#', text: 'Guides', desc: 'News and updates' },
+  { href: '/blog', text: 'Blog', desc: 'News and updates' },
+  { href: '/case-studies', text: 'Case studies', desc: 'News and updates' },
+];
+
+const quickLinks = [
+  { href: '#', text: 'FAQs' },
+  { href: '#', text: 'Become a partner' },
+  { href: '#', text: 'Our partners' },
+  { href: '#', text: 'Guides' },
+  { href: '#', text: 'Customer support' },
+  { href: '#', text: 'Legal' },
+];
+---
+
+<nav class="mega-nav" data-menu-wrap data-menu-open="false">
+  <div class="mega-nav__bar padding-global">
+    <div class="mega-nav__container">
+      <div class="mega-nav__bar-start">
+        <a href="/" class="mega-nav__bar-logo w-inline-block w--current" aria-current="page" data-menu-logo>
+          <img src="/images/altus-logo-purple.svg" alt="Altus" class="nav-logo" />
+        </a>
+        <div class="mega-nav__bar-inner" data-mobile-nav data-nav-list>
+          <ul class="mega-nav__bar-list">
+            <li class="li" data-nav-list-item>
+              <button class="mega-nav__bar-link is--dropdown" data-dropdown-toggle="products" aria-haspopup="true" aria-expanded="false">
+                <span class="mega-nav__bar-link-label">Product</span>
+                <svg class="mega-nav__bar-link-icon is--dropdown" width="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.6665 8.3335L9.99984 11.6668L13.3332 8.3335" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </li>
+            <li data-nav-list-item>
+              <button class="mega-nav__bar-link is--dropdown" data-dropdown-toggle="company" aria-haspopup="true" aria-expanded="false">
+                <span class="mega-nav__bar-link-label">Resources</span>
+                <svg class="mega-nav__bar-link-icon is--dropdown" width="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.6665 8.3335L9.99984 11.6668L13.3332 8.3335" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </li>
+            <li data-nav-list-item>
+              <a href="/pricing" class="mega-nav__bar-link w-inline-block">
+                <span class="mega-nav__bar-link-label">Pricing</span>
+              </a>
+            </li>
+            <li data-nav-list-item>
+              <a href="/pricing" class="mega-nav__bar-link w-inline-block">
+                <span class="mega-nav__bar-link-label">Partners</span>
+              </a>
+            </li>
+            <li data-nav-list-item>
+              <a href="/about-us" class="mega-nav__bar-link w-inline-block">
+                <span class="mega-nav__bar-link-label">About</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="mega-nav__bar-list is--actions" data-nav-list-item>
+            <a href="/demo" class="button is-small w-button">Book a demo</a>
+          </ul>
+        </div>
+        <div class="mega-nav__bar-end">
+          <button class="mega-nav__burger" data-burger-toggle aria-label="toggle menu" aria-expanded="false">
+            <span class="mega-nav__burger-line" data-burger-line="top"></span>
+            <span class="mega-nav__burger-line" data-burger-line="mid"></span>
+            <span class="mega-nav__burger-line" data-burger-line="bot"></span>
+          </button>
+        </div>
+        <div class="mega-nav__back" data-mobile-back>
+          <button class="mega-nav__bar-link is--back" aria-label="back to menu">
+            <svg class="mega-nav__bar-link-icon" width="100%" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.6665 6.6665L8.33317 9.99984L11.6665 13.3332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span class="mega-nav__bar-link-label">Back</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mega-nav__dropdown-wrapper" data-dropdown-wrapper>
+    <div class="mega-nav__dropdown-container" data-dropdown-container>
+      <div class="mega-nav__dropdown-bg" data-dropdown-bg></div>
+      <div class="mega-nav__dropdown-panel" data-nav-content="products" role="region" aria-label="products menu">
+        <div class="mega-nav__dropdown-inner">
+          <div class="mega-nav__panel-col">
+            <span class="mega-nav__panel-label">Platform</span>
+            <ul class="mega-nav__panel-list">
+              {productLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="mega-nav__panel-link w-inline-block">
+                    <span class="mega-nav__panel-link-text">{link.text}</span>
+                    <span class="mega-nav__panel-link-desc">{link.desc}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="mega-nav__panel-col">
+            <span class="mega-nav__panel-label">Explore</span>
+            <ul class="mega-nav__panel-list">
+              {exploreLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="mega-nav__panel-link w-inline-block">
+                    <span class="mega-nav__panel-link-text">{link.text}</span>
+                    <span class="mega-nav__panel-link-desc">{link.desc}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mega-nav__dropdown-panel" data-nav-content="company" role="region" aria-label="resources menu">
+        <div class="mega-nav__dropdown-inner">
+          <div class="mega-nav__panel-col">
+            <span class="mega-nav__panel-label">company</span>
+            <ul class="mega-nav__panel-list">
+              {companyLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="mega-nav__panel-link w-inline-block">
+                    <span class="mega-nav__panel-link-text">{link.text}</span>
+                    <span class="mega-nav__panel-link-desc">{link.desc}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="mega-nav__panel-col">
+            <span class="mega-nav__panel-label">quick links</span>
+            <ul class="mega-nav__panel-list">
+              {quickLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="mega-nav__panel-link w-inline-block">
+                    <span class="mega-nav__panel-link-text">{link.text}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="mega-nav__panel-col is--colored has--card">
+            <span class="mega-nav__panel-label">featured blog</span>
+            <div class="mega-nav__card">
+              <div class="mega-nav__card-visual">
+                <img src="/images/blog-march-2026.png" alt="" loading="lazy" class="mega-nav__card-img" />
+              </div>
+              <div class="mega-nav__card-content">
+                <div class="mega-nav__card-text">
+                  <span class="mega-nav__panel-link-text">New from Altus: our March 2026 release wrap up</span>
+                </div>
+                <a href="/blog" class="button is-small w-inline-block">
+                  <span class="mega-nav__card-cta-label">Learn more</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mega-nav__backdrop" data-menu-backdrop></div>
+</nav>
