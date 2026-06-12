@@ -1,0 +1,772 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Cta from '../components/Cta.astro';
+
+const checkIcon = `<svg width="100%" height="100%" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="m229.66 77.66l-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69L218.34 66.34a8 8 0 0 1 11.32 11.32" fill="currentColor"></path></svg>`;
+
+const reasons = [
+  {
+    heading: 'Comprehensive Project Online replacement',
+    text: "With 1:1 Project Online feature parity and purpose-built migration tools, Altus is designed to make migration quick and simple. Whether it's project data and custom fields, or Power BI reports, everything you need can come with you when you migrate to Altus.",
+  },
+  {
+    heading: 'Keep using MS Project Desktop',
+    text: "Altus is compatible with a range of scheduling tools, so you can keep using Project Desktop, plus you're no longer locked into one tool. Teams can choose the tool that suits them best, while Altus brings everything together in a single source of truth you can trust.",
+  },
+  {
+    heading: 'A true Microsoft-native solution',
+    text: "Altus' unique architecture means it's securely deployed within your Microsoft tenant. Unlike other solutions, with Altus your data never leaves your Microsoft service boundary, and you always remain in control of the deployment.",
+  },
+  {
+    heading: 'Trusted migration partner network',
+    text: "Our partner network are experts in everything PPM, Project Online and Microsoft. With extensive experience across countless Project Online migrations, they're with you every step of the way to ensure a seamless migration process for your organisation.",
+  },
+];
+
+// included: [Project Online, Altus]
+const comparison = [
+  {
+    group: 'Project Management',
+    rows: [
+      { feature: 'Project Scheduling', sub: 'Gantt charts, dependencies and baselines', included: [true, true] },
+      { feature: 'Financials', sub: 'Time-phased project financials', included: [true, true] },
+      { feature: 'Timesheets & Time Tracking', included: [true, true] },
+      { feature: 'Issue & Risk Management', included: [true, true] },
+      { feature: 'Power BI Reporting Integration', included: [true, true] },
+      { feature: 'Document Management', included: [true, true] },
+      { feature: 'Task Management', sub: 'Boards and sprints', included: [true, true] },
+      {
+        feature: 'External Scheduling & Task Management Integrations',
+        sub: 'Microsoft Project Desktop, Planner Premium & Basic, Jira, Azure DevOps etc.',
+        included: [false, true],
+      },
+      { feature: 'External Finance System Integrations', included: [false, true] },
+      { feature: 'Microsoft Teams Integration', included: [false, true] },
+      { feature: 'AI-Powered Assistance via Microsoft Copilot', included: [false, true] },
+    ],
+  },
+  {
+    group: 'Resource Management',
+    rows: [
+      { feature: 'Demand Management', sub: 'Project intake and approval', included: [true, true] },
+      { feature: 'Central Resource Pool', included: [true, true] },
+      { feature: 'Skills', included: [true, true] },
+      { feature: 'Capacity vs Demand Views', included: [true, true] },
+      { feature: 'Generic Resources', included: [true, true] },
+      { feature: 'Resource Allocations', included: [true, true] },
+      { feature: 'Resource Rates', included: [true, true] },
+      { feature: 'Enterprise Calendars', included: [true, true] },
+      { feature: 'Scenario Planning (Resource Workload)', included: [true, true] },
+      { feature: 'Resource Heatmaps', included: [true, true] },
+      { feature: 'External HR System Integrations', included: [false, true] },
+    ],
+  },
+  {
+    group: 'Portfolio/Program & Strategic Management',
+    rows: [
+      { feature: 'Program & Portfolio Management', sub: 'Grouping projects', included: [false, true] },
+      { feature: 'Prioritisation', included: [true, true] },
+      { feature: 'Scenario Planning (Schedule)', included: [true, true] },
+      { feature: 'Proposal Management', included: [false, true] },
+      { feature: 'Strategic Alignment & Benefits Tracking', included: [false, true] },
+    ],
+  },
+];
+
+const steps = [
+  {
+    heading: 'Migrate your Project Online data before September 2026',
+    text: "Whether you want to start fresh in Altus with your active projects, or bring across all your historical data and knowledge, there's a simple migration path for every organisation.",
+  },
+  {
+    heading: 'Work in MS Project Desktop, Planner or Planner Premium',
+    text: "The right tool for every project. Whether it's complex schedules that demand the full-featured capability of Project Desktop, or lightweight projects in Planner. Bring everything together in real-time with Altus.",
+  },
+  {
+    heading: 'Sync in real-time and manage reporting with Altus',
+    text: 'With all the essential reports you need out-of-the-box, plus AI-powered status updates, you can create reports in minutes, not days.',
+  },
+];
+
+const ecosystem = [
+  {
+    heading: 'Native Microsoft 365 integration',
+    text: 'Altus operates within your own Microsoft 365 tenant, ensuring data never leaves your secure environment.',
+  },
+  {
+    heading: 'Integration with Microsoft tools',
+    text: 'Altus integrates seamlessly with Copilot, Teams, SharePoint, Power BI, Word, Excel, PowerPoint, and Power Automate workflows.',
+  },
+  {
+    heading: 'AI-driven productivity',
+    text: 'Leverage AI-powered Microsoft Copilot to enhance productivity, eliminate administration and provide trustworthy guidance on your project planning and execution.',
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      'The Altus solution provided a way to examine all our schedules and be able to report on them and easily pull out gateway milestones and key milestones. This allowed us to shift our focus to overall project management rather than previously, where the focus had been on manually managing finances.',
+    name: 'Tim Mason',
+    role: 'Head of PMO, Melbourne Airport',
+  },
+  {
+    quote:
+      'There has been a strong uptake of Altus across the Department, with approximately 750 users and counting. The platform’s user-friendliness and intuitiveness is one of the main reasons behind its rapid adoption.',
+    name: 'Colin Munro',
+    role: 'Project Manager, NSW Department of Customer Service',
+  },
+];
+---
+
+<BaseLayout
+  title="Microsoft Project Online Alternatives – Altus"
+  description="Microsoft Project Online retires on September 30, 2026. Altus is the recommended replacement: 1:1 feature parity, purpose-built migration tools and a trusted partner network."
+>
+  <header class="section_po-hero">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-section-large">
+          <div class="po-hero">
+            <div>
+              <div class="po-kicker">
+                <div class="square"></div>
+                <div class="text-style-tagline">Project Online migration</div>
+              </div>
+              <div class="spacer-small"></div>
+              <h1 class="heading-style-h1">
+                The successor to Microsoft <span class="text-highlight">Project Online</span>
+              </h1>
+            </div>
+            <div class="po-hero__right">
+              <div class="tag-wrapper inline">
+                <div>Project Online retires 30 September 2026</div>
+              </div>
+              <div class="spacer-small"></div>
+              <p class="heading-style-h6">
+                It’s official, Microsoft Project Online will retire on September 30, 2026. If you’re looking for a
+                Project Online replacement, look no further than Altus.
+              </p>
+              <div class="spacer-medium"></div>
+              <div class="button-group">
+                <a href="/demo" class="button w-button">Book a migration consultation</a>
+                <a href="/our-partners" class="button is-secondary w-button">Find a migration partner</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section_po-reasons">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="po-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">Why Altus</div>
+            <div class="po-divider__line"></div>
+            <div class="text-style-tagline po-divider__count">04</div>
+          </div>
+          <div class="max-width-large">
+            <h2 class="heading-style-h2">Why is Altus a recommended Project Online replacement?</h2>
+          </div>
+          <div class="spacer-large"></div>
+          <div class="po-reasons-grid">
+            {reasons.map((reason) => (
+              <article class="po-card">
+                <div class="square"></div>
+                <h3 class="heading-style-h5">{reason.heading}</h3>
+                <p class="text-size-medium po-card__text">{reason.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_po-callout">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="po-callout">
+            <div class="po-callout__content">
+              <h2 class="heading-style-h3">Looking for fast, cost-effective migration?</h2>
+              <div class="spacer-xsmall"></div>
+              <p class="text-size-medium po-callout__text">
+                Move from Project Online to Altus with a structured, six-week fixed-price migration, minimal disruption
+                — and keep using Microsoft Project Desktop.
+              </p>
+            </div>
+            <a href="/demo" class="button is-secondary w-button">Talk to our team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_po-comparison">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="po-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">Feature comparison</div>
+            <div class="po-divider__line"></div>
+          </div>
+          <div class="po-table">
+            <div class="po-table__top-row">
+              <div class="po-table__top-feature">
+                <h2 class="heading-style-h4">Project Online &amp; Altus feature comparison</h2>
+              </div>
+              <div class="po-table__top-cell">
+                <div class="heading-style-h5">Project Online</div>
+              </div>
+              <div class="po-table__top-cell is-featured">
+                <img src="/images/favicon.png" alt="" class="po-table__mark" />
+                <div class="heading-style-h5">Altus</div>
+              </div>
+            </div>
+            {comparison.map((group) => (
+              <>
+                <div class="po-table__group-row">
+                  <div class="tag">{group.group}</div>
+                </div>
+                {group.rows.map((row) => (
+                  <div class="po-table__row">
+                    <div class="po-table__feature">
+                      <div>{row.feature}</div>
+                      {row.sub && <div class="text-size-small po-table__sub">{row.sub}</div>}
+                    </div>
+                    {row.included.map((included, i) => (
+                      <div class={`po-table__cell${i === 1 ? ' is-featured' : ''}`}>
+                        {included ? (
+                          <div class="po-table__check" set:html={checkIcon} />
+                        ) : (
+                          <div class="po-table__dash" aria-label="not included">—</div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_po-casestudy">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="po-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">Migration case study</div>
+            <div class="po-divider__line"></div>
+          </div>
+          <blockquote class="po-quote">
+            <p class="heading-style-h4 po-quote__text">
+              “For Life Without Barriers, Altus has provided everyone from ‘informal’ project managers to seasoned
+              project professionals with a standardised platform that takes care of their initiatives, resulting in
+              more accurate and complete information about work underway across its operations.”
+            </p>
+            <div class="spacer-medium"></div>
+            <div class="po-quote__footer">
+              <div class="heading-style-h6">Life Without Barriers</div>
+              <a href="/case-studies" class="po-quote__link">
+                <span class="text-style-tagline">See the case study</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </a>
+            </div>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_po-steps">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="po-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">How it works</div>
+            <div class="po-divider__line"></div>
+          </div>
+          <div class="po-split-header">
+            <h2 class="heading-style-h2">Keep the tools your teams know. Unify everything in Altus.</h2>
+            <p class="text-size-medium text-style-muted po-split-header__text">
+              Keep Microsoft Project Desktop for complex schedules, Planner Basic for simpler schedules, and Planner
+              Premium for medium-complexity schedules. Altus combines all schedules, unifies insights and visibility —
+              and you can finally manage your global resource pool across all schedules.
+            </p>
+          </div>
+          <div class="spacer-large"></div>
+          <div class="po-steps">
+            {steps.map((step, i) => (
+              <article class="po-step">
+                <div class="text-style-tagline po-step__number">{String(i + 1).padStart(2, '0')}</div>
+                <h3 class="heading-style-h5">{step.heading}</h3>
+                <p class="text-size-medium po-step__text">{step.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_po-resources">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="po-resources">
+            <div class="po-resources__content">
+              <h2 class="heading-style-h3">Need help planning your migration?</h2>
+              <div class="spacer-xsmall"></div>
+              <p class="text-size-medium po-resources__text">
+                We’ve put together a pack of Microsoft Project Online migration resources, including our migration
+                guide and a recording of our recent Ask An Expert webinar in partnership with the team from Sensei.
+              </p>
+            </div>
+            <a href="#" class="button w-button">Get the migration pack</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_po-ecosystem">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="po-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">Microsoft ecosystem</div>
+            <div class="po-divider__line"></div>
+          </div>
+          <div class="max-width-large">
+            <h2 class="heading-style-h2">Seamless Microsoft ecosystem integrations</h2>
+          </div>
+          <div class="spacer-large"></div>
+          <div class="po-ecosystem-grid">
+            {ecosystem.map((item) => (
+              <article class="po-step">
+                <div class="square po-ecosystem-square"></div>
+                <h3 class="heading-style-h5">{item.heading}</h3>
+                <p class="text-size-medium po-step__text">{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_po-testimonials">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="padding-bottom padding-xxlarge">
+          <div class="po-divider">
+            <div class="square"></div>
+            <div class="text-style-tagline">What our customers say</div>
+            <div class="po-divider__line"></div>
+          </div>
+          <div class="po-quotes-grid">
+            {testimonials.map((t) => (
+              <article class="po-quote-card">
+                <p class="text-size-medium po-quote-card__quote">“{t.quote}”</p>
+                <div class="po-quote-card__footer">
+                  <div class="heading-style-h6">{t.name}</div>
+                  <div class="text-size-small po-quote-card__role">{t.role}</div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Cta
+    heading="Planning a Project Online migration?"
+    text="Book a 30-minute Project Online consultation with the Altus team today."
+    primaryLabel="Book a consultation"
+    primaryHref="/demo"
+    secondaryLabel="Find a migration partner"
+    secondaryHref="/our-partners"
+  />
+</BaseLayout>
+
+<style>
+  .po-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 4rem;
+    grid-row-gap: 2.5rem;
+    align-items: end;
+  }
+
+  .po-hero__right {
+    max-width: 36rem;
+  }
+
+  .po-kicker {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 0.75rem;
+  }
+
+  .po-divider {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .po-divider__line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--_primitives---opacity--neutral-darkest-10);
+  }
+
+  .po-divider__count {
+    opacity: 0.5;
+    font-size: 0.75rem;
+  }
+
+  .po-split-header {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    grid-column-gap: 4rem;
+    grid-row-gap: 1rem;
+    align-items: end;
+  }
+
+  .po-split-header h2 {
+    margin: 0;
+  }
+
+  .po-split-header__text {
+    margin: 0;
+    max-width: 30rem;
+    justify-self: end;
+  }
+
+  /* ---- Reason cards ---- */
+  .po-reasons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .po-card {
+    background-color: var(--_primitives---colors--white);
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    border-radius: 0.5rem;
+    padding: 2rem;
+  }
+
+  .po-card .square {
+    margin-bottom: 2.5rem;
+  }
+
+  .po-card h3 {
+    margin: 0 0 0.75rem;
+  }
+
+  .po-card__text {
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  /* ---- Callout bands ---- */
+  .po-callout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem 4rem;
+    flex-wrap: wrap;
+    background-color: var(--_primitives---altus--purple-bright);
+    color: var(--_primitives---colors--white);
+    border-radius: 0.5rem;
+    padding: 3rem;
+  }
+
+  .po-callout h2 {
+    margin: 0;
+    color: var(--_primitives---colors--white);
+  }
+
+  .po-callout__content {
+    max-width: 44rem;
+  }
+
+  .po-callout__text {
+    margin: 0;
+    opacity: 0.85;
+  }
+
+  /* ---- Comparison table ---- */
+  .po-table {
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    background-color: var(--_primitives---altus--50);
+  }
+
+  .po-table__top-row,
+  .po-table__row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    border-bottom: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+  }
+
+  .po-table__top-feature {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .po-table__top-feature h2 {
+    margin: 0;
+    max-width: 18rem;
+  }
+
+  .po-table__top-cell {
+    border-left: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    padding: 1.5rem 1rem;
+    display: flex;
+    align-items: center;
+    grid-column-gap: 0.75rem;
+  }
+
+  .po-table__top-cell.is-featured {
+    background-color: var(--_primitives---opacity--white-30);
+  }
+
+  .po-table__top-cell .heading-style-h5 {
+    margin: 0;
+  }
+
+  .po-table__mark {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: contain;
+  }
+
+  .po-table__group-row {
+    border-bottom: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    background-color: var(--_primitives---opacity--neutral-darkest-5);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .po-table__row:hover {
+    background-color: #00000008;
+  }
+
+  .po-table__row:last-child {
+    border-bottom: none;
+  }
+
+  .po-table__feature {
+    padding: 1rem 1.5rem;
+  }
+
+  .po-table__sub {
+    opacity: 0.55;
+    margin-top: 0.25rem;
+  }
+
+  .po-table__cell {
+    border-left: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+  }
+
+  .po-table__cell.is-featured {
+    background-color: var(--_primitives---opacity--white-30);
+  }
+
+  .po-table__check {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--_primitives---altus--purple-bright);
+  }
+
+  .po-table__dash {
+    opacity: 0.25;
+    line-height: 1;
+  }
+
+  /* ---- Quote ---- */
+  .po-quote {
+    margin: 0;
+    border-left: 2px solid var(--_primitives---altus--purple-bright);
+    padding-left: 2.5rem;
+    max-width: 60rem;
+  }
+
+  .po-quote__text {
+    margin: 0;
+  }
+
+  .po-quote__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+  }
+
+  .po-quote__link {
+    display: inline-flex;
+    align-items: center;
+    grid-column-gap: 0.5rem;
+    color: var(--_primitives---brand--fuchsia-blue--700);
+    transition: opacity 0.2s ease;
+  }
+
+  .po-quote__link:hover {
+    opacity: 0.7;
+  }
+
+  .po-quote__link .text-style-tagline {
+    font-size: 0.75rem;
+  }
+
+  /* ---- Steps + ecosystem ---- */
+  .po-steps,
+  .po-ecosystem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .po-step {
+    border-top: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    padding-top: 1.5rem;
+  }
+
+  .po-step__number {
+    color: var(--_primitives---altus--purple-bright);
+    font-size: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .po-step h3 {
+    margin: 0 0 0.75rem;
+  }
+
+  .po-step__text {
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .po-ecosystem-square {
+    margin-bottom: 1.5rem;
+  }
+
+  /* ---- Resources band (dark) ---- */
+  .po-resources {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem 4rem;
+    flex-wrap: wrap;
+    background-color: var(--_primitives---altus--950);
+    color: var(--_primitives---colors--white);
+    border-radius: 0.5rem;
+    padding: 3rem;
+  }
+
+  .po-resources h2 {
+    margin: 0;
+    color: var(--_primitives---colors--white);
+  }
+
+  .po-resources__content {
+    max-width: 44rem;
+  }
+
+  .po-resources__text {
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  /* ---- Testimonial cards ---- */
+  .po-quotes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .po-quote-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--_primitives---colors--white);
+    border: 1px solid var(--_primitives---opacity--neutral-darkest-10);
+    border-radius: 0.5rem;
+    padding: 2rem;
+  }
+
+  .po-quote-card__quote {
+    margin: 0 0 1.5rem;
+    opacity: 0.8;
+  }
+
+  .po-quote-card__footer {
+    margin-top: auto;
+  }
+
+  .po-quote-card__role {
+    opacity: 0.6;
+  }
+
+  @media screen and (max-width: 991px) {
+    .po-hero,
+    .po-split-header,
+    .po-reasons-grid,
+    .po-quotes-grid {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .po-split-header__text {
+      justify-self: start;
+    }
+
+    .po-steps,
+    .po-ecosystem-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .po-quote {
+      padding-left: 1.5rem;
+    }
+
+    .po-table__top-row,
+    .po-table__row {
+      grid-template-columns: 1.5fr 1fr 1fr;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    .po-card,
+    .po-quote-card {
+      padding: 1.5rem;
+    }
+
+    .po-callout,
+    .po-resources {
+      padding: 1.5rem;
+    }
+  }
+</style>
